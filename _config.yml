@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: 肥婆大人的博客
+subtitle: '好奇'
+description: '怎么才能让知识串起来'
 keywords:
-author: John Doe
+author: fatpo
 language: en
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: https://fatpo.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
