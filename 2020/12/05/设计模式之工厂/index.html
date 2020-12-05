@@ -15,7 +15,7 @@
 <meta property="og:description" content="工厂工厂有 2 个作用：  一个是 new 对象（不用工厂也能 new 对象，所以这是句废话） 另外一个就是对 new 对象过程中可以操控 加日志 加控制权限，不同对象的生成有不同的权限 加耗时监控 等等    代码： 1https:&#x2F;&#x2F;github.com&#x2F;fatpo&#x2F;oyDesignPatterns&#x2F;tree&#x2F;main&#x2F;sr">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-05T22:24:53.000Z">
-<meta property="article:modified_time" content="2020-12-05T14:22:22.379Z">
+<meta property="article:modified_time" content="2020-12-05T15:57:13.973Z">
 <meta property="article:author" content="fatpo">
 <meta property="article:tag" content="设计模式专栏">
 <meta name="twitter:card" content="summary">
@@ -114,6 +114,7 @@
 <li>抽象工厂</li>
 <li>Spring IOC</li>
 </ul>
+<p>最后再碰瓷一个： <code>静态工厂</code>。</p>
 <p>优缺点对比：</p>
 <table>
 <thead>
@@ -171,10 +172,92 @@
 
 <p>运行日志：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">生产现实世界的交通工具：汽车</span><br><span class="line">生产现实世界的食物：面包</span><br><span class="line">生产现实世界的武器：AK47</span><br><span class="line">生产魔法世界的交通工具：扫帚</span><br><span class="line">生产魔法世界的食物：蘑菇</span><br><span class="line">生产魔法世界的武器：魔法棒</span><br></pre></td></tr></table></figure>
+
+<h1 id="静态工厂"><a href="#静态工厂" class="headerlink" title="静态工厂"></a>静态工厂</h1><p>为啥我把这个玩意放到最后呢，因为我觉得这个<code>静态工厂</code>是来碰瓷的，它貌似不是在多态上面发展的。</p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package design.factory.staticfactory;</span><br><span class="line"></span><br><span class="line">public class CarStaticFactory &#123;</span><br><span class="line">    public static Car createBigCar() &#123;</span><br><span class="line">        Car car &#x3D; new Car();</span><br><span class="line">        car.weight &#x3D; 1000;</span><br><span class="line">        System.out.println(&quot;静态工厂：创建一个大车子&quot;);</span><br><span class="line">        return car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Car createCheapCar() &#123;</span><br><span class="line">        Car car &#x3D; new Car();</span><br><span class="line">        car.price &#x3D; 1;</span><br><span class="line">        System.out.println(&quot;静态工厂：创建一个便宜车子&quot;);</span><br><span class="line">        return car;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class 静态工厂 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Car c1 &#x3D; CarStaticFactory.createBigCar();</span><br><span class="line">        Car c2 &#x3D; CarStaticFactory.createCheapCar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它一直是用来和构造方法 PK 用的。</p>
+<table>
+<thead>
+<tr>
+<th align="left">静态工厂</th>
+<th>构造方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">比构造方法多一个名字，增加可读性</td>
+<td>一个个构造方法都是同样的 funcName</td>
+</tr>
+<tr>
+<td align="left">可以通过单例模式那种套路，只返回一个实例<br>也可以每次返回新对象</td>
+<td>只能返回新对象</td>
+</tr>
+<tr>
+<td align="left">可以返回原类型的子类</td>
+<td>只能返回 原类型这个类</td>
+</tr>
+</tbody></table>
+<p>当然静态工厂有一个很大的缺点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在 API 文档上面，无法明确的识别，这是一个构造函数！</span><br></pre></td></tr></table></figure>
+
+<p>基于上面的缺点，程序员要遵守约定俗称的命名：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数命名</th>
+<th>场景</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">from</td>
+<td>用于格式转换</td>
+<td>Date date = Date.from(instant)</td>
+</tr>
+<tr>
+<td align="left">of</td>
+<td>返回聚合对象的其中一个</td>
+<td>Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);</td>
+</tr>
+<tr>
+<td align="left">valueOf</td>
+<td>格式转换</td>
+<td>BigDecimal.valueOf(long val)</td>
+</tr>
+<tr>
+<td align="left">instance、getInstance</td>
+<td>返回单例</td>
+<td>单例</td>
+</tr>
+<tr>
+<td align="left">create、newInstance</td>
+<td>返回新对象</td>
+<td>普通 new</td>
+</tr>
+<tr>
+<td align="left">get<Type></td>
+<td>类似 getInstance，用于工厂方法返回不同类</td>
+<td>FileStore fs = Files.getFileStore(path)</td>
+</tr>
+<tr>
+<td align="left">new<Type></td>
+<td>类似 newInstance，用于工厂方法返回不同类</td>
+<td>BufferedReader bf = Files.newBufferedReader(path)</td>
+</tr>
+<tr>
+<td align="left"><Type></td>
+<td>get<Type>和 new<Type> 的简版</td>
+<td>List<Complaint> litany = Collections.list(legacyLitany)</td>
+</tr>
+</tbody></table>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/12/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82/" data-id="ckibsdjb60004ycsp0h4sdkn9" class="article-share-link">Share</a>
+      <a data-url="https://fatpo.github.io/2020/12/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82/" data-id="ckibvrk1v0004xvq17xyu1f3i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
