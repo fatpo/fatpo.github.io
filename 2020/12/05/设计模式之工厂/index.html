@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>设计模式之工厂 | 肥婆大人的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工厂工厂有 2 个作用：  一个是 new 对象（不用工厂也能 new 对象，所以这是句废话） 另外一个就是对 new 对象过程中可以操控 加日志 加控制权限，不同对象的生成有不同的权限 加耗时监控 …    工厂分类实际上工厂可如下分类：   简单工厂 工厂方法 抽象工厂 Spring IOC     工厂 优点 缺点    简单工厂 1、简单；2、避免客户端和产品直接耦合； 1、每多一个产品，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式之工厂">
+<meta property="og:url" content="https://fatpo.github.io/2020/12/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82/index.html">
+<meta property="og:site_name" content="肥婆大人的博客">
+<meta property="og:description" content="工厂工厂有 2 个作用：  一个是 new 对象（不用工厂也能 new 对象，所以这是句废话） 另外一个就是对 new 对象过程中可以操控 加日志 加控制权限，不同对象的生成有不同的权限 加耗时监控 …    工厂分类实际上工厂可如下分类：   简单工厂 工厂方法 抽象工厂 Spring IOC     工厂 优点 缺点    简单工厂 1、简单；2、避免客户端和产品直接耦合； 1、每多一个产品，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-05T22:24:53.000Z">
+<meta property="article:modified_time" content="2020-12-05T13:51:34.409Z">
+<meta property="article:author" content="fatpo">
+<meta property="article:tag" content="设计模式专栏">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="肥婆大人的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">肥婆大人的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fatpo.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-设计模式之工厂" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82/" class="article-date">
+  <time datetime="2020-12-05T22:24:53.000Z" itemprop="datePublished">2020-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/">设计模式专栏</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式之工厂
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="工厂"><a href="#工厂" class="headerlink" title="工厂"></a>工厂</h1><p>工厂有 2 个作用：</p>
+<ul>
+<li>一个是 new 对象（不用工厂也能 new 对象，所以这是句废话）</li>
+<li>另外一个就是对 new 对象过程中可以操控<ul>
+<li>加日志</li>
+<li>加控制权限，不同对象的生成有不同的权限</li>
+<li>加耗时监控</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h1 id="工厂分类"><a href="#工厂分类" class="headerlink" title="工厂分类"></a>工厂分类</h1><p>实际上工厂可如下分类： </p>
+<ul>
+<li>简单工厂</li>
+<li>工厂方法</li>
+<li>抽象工厂</li>
+<li>Spring IOC</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">工厂</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">简单工厂</td>
+<td>1、简单；<br>2、避免客户端和产品直接耦合；<br></td>
+<td>1、每多一个产品，就要改一波工厂类，违反开闭原则；<br>2、代码耦合严重。</td>
+</tr>
+<tr>
+<td align="left">工厂方法</td>
+<td>1、比简单工厂复杂一丢丢，总体简单；<br> 2、避免客户端和产品直接耦合；<br>3、<code>新增产品</code>不用修改已有工厂类，符合开闭原则。 <br></td>
+<td>1、产品和产品工厂高度关联，基本上来说改一个产品，很可能会改对应的工厂类。</td>
+</tr>
+<tr>
+<td align="left">抽象工厂</td>
+<td>1、一键换肤；<br> 2、非常适合更换产品族，比如换成魔法时代、换成现代、换成古代。</td>
+<td>1、虽然更换产品族很简单，但是新增产品比较麻烦。</td>
+</tr>
+</tbody></table>
+<h1 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h1><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>定义一个简单工厂：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> design.factory.v1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">newCar</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;简单工厂：生产汽车...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Car();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Plane <span class="title">newPlane</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;简单工厂：生产飞机...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Plane();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bloom <span class="title">newBloom</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;简单工厂：生产扫帚...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Bloom();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>简单工厂的运用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> design.factory.v1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 简单工厂 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SimpleFactory simpleFactory = <span class="keyword">new</span> SimpleFactory();</span><br><span class="line"></span><br><span class="line">        Moveable m = simpleFactory.newCar();</span><br><span class="line">        m.run();</span><br><span class="line"></span><br><span class="line">        Moveable m2 = simpleFactory.newPlane();</span><br><span class="line">        m2.run();</span><br><span class="line"></span><br><span class="line">        Moveable m3 = simpleFactory.newBloom();</span><br><span class="line">        m3.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">简单工厂：生产汽车...</span><br><span class="line">汽车 跑起来, bibibibi...</span><br><span class="line">简单工厂：生产飞机...</span><br><span class="line">飞机，飞起来 ....</span><br><span class="line">简单工厂：生产扫帚...</span><br><span class="line">魔法扫帚，飞...</span><br></pre></td></tr></table></figure>
+
+<h1 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h1><p>说下自己的理解，工厂方法实际上是简单工厂违反的”封闭开放原则”的优化。</p>
+<p>之前想不通的一点是：<code>明明改了代码啊，客户端调用总得改吧。</code></p>
+<p>实际上，上面的那个想不通是对的，人家是不改动代码，不改动的对象是：<code>工厂类</code>。</p>
+<p>你客户端必然要修改的，毕竟你要使用新的具体工厂来 new 新的产品！</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">工厂方法的运用：</span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">package design.factory.v2;</span><br><span class="line"></span><br><span class="line">import design.factory.v1.Moveable;</span><br><span class="line">import design.factory.v1.SimpleFactory;</span><br><span class="line"></span><br><span class="line">public class 工厂方法 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Moveable m &#x3D; new CarFactory().create();</span><br><span class="line">        m.run();</span><br><span class="line"></span><br><span class="line">        Moveable m2 &#x3D; new PlaneFactory().create();</span><br><span class="line">        m2.run();</span><br><span class="line"></span><br><span class="line">        Moveable m3 &#x3D; new BroomFactory().create();</span><br><span class="line">        m3.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">########################</span><br><span class="line">工厂方法： 生产一个 car...</span><br><span class="line">汽车 跑起来, bibibibi...</span><br><span class="line">########################</span><br><span class="line">工厂方法： 生产一个 plane...</span><br><span class="line">飞机，飞起来 ....</span><br><span class="line">########################</span><br><span class="line">工厂方法： 生产一个 魔法扫帚...</span><br><span class="line">魔法扫帚，飞...</span><br></pre></td></tr></table></figure>
+<h1 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h1><p>基本上所有的资料都会说，它扩展产品一族很方便，但是扩展产品很麻烦。</p>
+<p>我对前半句话听懂了，因为更换产品族，就是客户端一个代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切换成现实世界</span></span><br><span class="line">AbstractFactory f = <span class="keyword">new</span> ModernFactory();</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切换成魔法世界</span></span><br><span class="line"> AbstractFactory f = <span class="keyword">new</span> MagicFactory();</span><br></pre></td></tr></table></figure>
+<p>而且如果我此时此刻新增一个天空之城的世界，对已有的工厂类是无需做任何改动的，也是符合开闭原则。</p>
+<p>后半句话：<code>新增产品很难</code>，现在捋一捋，一个世界有：交通工具、食物、武器。</p>
+<p>如果我再新增一个产品：哼的歌曲，要改动多少类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、修改：抽象工厂类：AbstractFactory</span><br><span class="line">2、修改：所有的继承 AbstractFactory 的 世界类： MagicFactory、 ModernFactory</span><br><span class="line">3、新增: 新增的产品类。</span><br></pre></td></tr></table></figure>
+<p>是吧，所以确实在新增产品这个需求上面，力不从心，改动略多。</p>
+<p>使用示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> design.factory.v3;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 灵活扩展产品一族！</span></span><br><span class="line"><span class="comment"> * 目前产品：</span></span><br><span class="line"><span class="comment"> * 现代人： 开汽车 + 吃面包 + 武器 AK47</span></span><br><span class="line"><span class="comment"> * 魔法人： 骑扫帚 + 吃蘑菇 + 魔法棒</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 抽象工厂 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        AbstractFactory f = <span class="keyword">new</span> ModernFactory();</span><br><span class="line">        Vehicle v = f.createVehicle();</span><br><span class="line">        Food food = f.createFood();</span><br><span class="line">        Weapon weapon = f.createWeapon();</span><br><span class="line"></span><br><span class="line">        AbstractFactory f2 = <span class="keyword">new</span> MagicFactory();</span><br><span class="line">        Vehicle v2 = f2.createVehicle();</span><br><span class="line">        Food food2 = f2.createFood();</span><br><span class="line">        Weapon weapon2 = f2.createWeapon();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行日志：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">生产现实世界的交通工具：汽车</span><br><span class="line">生产现实世界的食物：面包</span><br><span class="line">生产现实世界的武器：AK47</span><br><span class="line">生产魔法世界的交通工具：扫帚</span><br><span class="line">生产魔法世界的食物：蘑菇</span><br><span class="line">生产魔法世界的武器：魔法棒</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fatpo.github.io/2020/12/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82/" data-id="ckibr9y340004wtqt8b3lalr2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/">设计模式专栏</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/" rel="tag">奇技淫巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/" style="font-size: 10px;">奇技淫巧</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" style="font-size: 20px;">设计模式专栏</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/12/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82/">设计模式之工厂</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/05/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">设计模式之策略模式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%B4%A3%E4%BB%BB%E9%93%BE/">设计模式之责任链</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/01/%E5%B8%AE%E8%8D%94%E6%9E%9D%E6%90%AD%E5%BB%BAdocker%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0/">帮荔枝搭建docker小程序后台</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 fatpo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
