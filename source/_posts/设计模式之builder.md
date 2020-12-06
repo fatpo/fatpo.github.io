@@ -22,6 +22,11 @@ Person.build外形().build家境().build性格().build社会关系()
 这样子，初始化一个 Person，可以只创建关心的属性
 ```
 
+代码如下：
+```dtd
+https://github.com/fatpo/oyDesignPatterns/tree/main/src/main/java/design/builder
+```
+
 # builder 经典模式
 
 背景：
