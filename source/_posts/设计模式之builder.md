@@ -280,6 +280,8 @@ class Person {
 
 增加一个 Person 的静态类 builder，它负责隔离必须和非必须属性，对所需的属性进行定制即可，编码简单，美观大方。
 
+有一说一，这个变种的 builder 模式，在日常开发中，确实有遇到过（比如推荐项目的 recommendContext，各种 build），还挺实用的。
+
 ```java
 package design.builder.v3;
 
