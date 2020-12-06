@@ -7,16 +7,16 @@
   
   <title>设计模式之builder | 肥婆大人的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="builder 应用场景1构建复杂对象 举例： 123456789一个 class Person 有 30 个属性构造方法：要传入 30 个入参，太累了采用 builder 模式Person.build外形().build家境().build性格().build社会关系()这样子，初始化一个 Person，可以只创建关心的属性  builder 经典模式背景： 1234567去电脑城配电脑你可以和">
+  <meta name="description" content="builder 应用场景1构建复杂对象 举例： 123456789一个 class Person 有 30 个属性构造方法：要传入 30 个入参，太累了采用 builder 模式Person.build外形().build家境().build性格().build社会关系()这样子，初始化一个 Person，可以只创建关心的属性  代码如下： 1https:&#x2F;&#x2F;github.co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之builder">
 <meta property="og:url" content="https://fatpo.github.io/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8Bbuilder/index.html">
 <meta property="og:site_name" content="肥婆大人的博客">
-<meta property="og:description" content="builder 应用场景1构建复杂对象 举例： 123456789一个 class Person 有 30 个属性构造方法：要传入 30 个入参，太累了采用 builder 模式Person.build外形().build家境().build性格().build社会关系()这样子，初始化一个 Person，可以只创建关心的属性  builder 经典模式背景： 1234567去电脑城配电脑你可以和">
+<meta property="og:description" content="builder 应用场景1构建复杂对象 举例： 123456789一个 class Person 有 30 个属性构造方法：要传入 30 个入参，太累了采用 builder 模式Person.build外形().build家境().build性格().build社会关系()这样子，初始化一个 Person，可以只创建关心的属性  代码如下： 1https:&#x2F;&#x2F;github.co">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://fatpo.github.io/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8Bbuilder/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8Bbuilder.png">
 <meta property="article:published_time" content="2020-12-06T21:17:33.000Z">
-<meta property="article:modified_time" content="2020-12-06T14:27:21.516Z">
+<meta property="article:modified_time" content="2020-12-06T14:29:53.772Z">
 <meta property="article:author" content="fatpo">
 <meta property="article:tag" content="设计模式专栏">
 <meta name="twitter:card" content="summary">
@@ -99,6 +99,9 @@
 <p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">一个 class Person 有 30 个属性</span><br><span class="line"></span><br><span class="line">构造方法：要传入 30 个入参，太累了</span><br><span class="line"></span><br><span class="line">采用 builder 模式</span><br><span class="line"></span><br><span class="line">Person.build外形().build家境().build性格().build社会关系()</span><br><span class="line"></span><br><span class="line">这样子，初始化一个 Person，可以只创建关心的属性</span><br></pre></td></tr></table></figure>
 
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;fatpo&#x2F;oyDesignPatterns&#x2F;tree&#x2F;main&#x2F;src&#x2F;main&#x2F;java&#x2F;design&#x2F;builder</span><br></pre></td></tr></table></figure>
+
 <h1 id="builder-经典模式"><a href="#builder-经典模式" class="headerlink" title="builder 经典模式"></a>builder 经典模式</h1><p>背景：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">去电脑城配电脑</span><br><span class="line"></span><br><span class="line">你可以和导购说: 我要一台低端电脑</span><br><span class="line"></span><br><span class="line">也可以和导购说：我要一台高端电脑</span><br><span class="line"></span><br><span class="line">电脑组成：CPU，内存，显示器，键盘等</span><br></pre></td></tr></table></figure>
 
@@ -125,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8Bbuilder/" data-id="ckid7zu4h0004y3t99q2x0tq6" class="article-share-link">Share</a>
+      <a data-url="https://fatpo.github.io/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8Bbuilder/" data-id="ckid834c20004z6lj8m0z1f8z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
