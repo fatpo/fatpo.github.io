@@ -66,6 +66,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-设计模式之组合模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2020-12-06T20:23:04.000Z" itemprop="datePublished">2020-12-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/">设计模式专栏</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">设计模式之组合模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>马老师说：看到树状结构就想起组合模式即可。</p>
+<p>类似这种树状结构：</p>
+<img src="/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/%E6%A0%91%E7%8A%B6%E7%BB%93%E6%9E%84demo%E5%9B%BE.png" class="" title="This is an image">
+
+
+<h1 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h1><p>git：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;fatpo&#x2F;oyDesignPatterns&#x2F;tree&#x2F;main&#x2F;src&#x2F;main&#x2F;java&#x2F;design&#x2F;composite</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F.png" class="" title="This is an image">
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> design.composite;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        BranchNode root = <span class="keyword">new</span> BranchNode(<span class="string">&quot;c 盘&quot;</span>);</span><br><span class="line">        BranchNode p1 = <span class="keyword">new</span> BranchNode(<span class="string">&quot;章节 1&quot;</span>);</span><br><span class="line">        BranchNode p2 = <span class="keyword">new</span> BranchNode(<span class="string">&quot;章节 2&quot;</span>);</span><br><span class="line">        root.add(p1);</span><br><span class="line">        root.add(p2);</span><br><span class="line"></span><br><span class="line">        Node q1 = <span class="keyword">new</span> LeafNode(<span class="string">&quot;文章 1&quot;</span>);</span><br><span class="line">        Node q2 = <span class="keyword">new</span> LeafNode(<span class="string">&quot;文章 2&quot;</span>);</span><br><span class="line">        Node q3 = <span class="keyword">new</span> LeafNode(<span class="string">&quot;文章 3&quot;</span>);</span><br><span class="line">        Node q4 = <span class="keyword">new</span> LeafNode(<span class="string">&quot;文章 4&quot;</span>);</span><br><span class="line"></span><br><span class="line">        p1.add(q1);</span><br><span class="line">        p1.add(q2);</span><br><span class="line">        p2.add(q3);</span><br><span class="line">        p2.add(q4);</span><br><span class="line"></span><br><span class="line">        printTree(root, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printTree</span><span class="params">(Node root, <span class="keyword">int</span> level)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; level; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">&quot;--&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        root.p();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (root <span class="keyword">instanceof</span> BranchNode) &#123;</span><br><span class="line">            <span class="keyword">for</span> (Node node : ((BranchNode) root).nodes) &#123;</span><br><span class="line">                printTree(node, level + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">p</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LeafNode</span> <span class="keyword">extends</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LeafNode</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">p</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BranchNode</span> <span class="keyword">extends</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    List&lt;Node&gt; nodes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BranchNode</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">p</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Node node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.nodes.add(node);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c 盘</span><br><span class="line">--章节 1</span><br><span class="line">----文章 1</span><br><span class="line">----文章 2</span><br><span class="line">--章节 2</span><br><span class="line">----文章 3</span><br><span class="line">----文章 4</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fatpo.github.io/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" data-id="ckid51vyp0009zsos80tx3az0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/06/hello-world/" class="article-date">
+  <time datetime="2020-12-06T13:04:59.129Z" itemprop="datePublished">2020-12-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/06/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://fatpo.github.io/2020/12/06/hello-world/" data-id="ckid51vyh0001zsos3l7c8zgs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-设计模式之观察者" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85/" class="article-date">
@@ -121,60 +226,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85/" data-id="ckicphhe1000904s001esblqv" class="article-share-link">Share</a>
+      <a data-url="https://fatpo.github.io/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85/" data-id="ckid51vyp000azsos19qehvm6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/12/06/hello-world/" class="article-date">
-  <time datetime="2020-12-06T05:49:12.564Z" itemprop="datePublished">2020-12-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/12/06/hello-world/" data-id="ckicphhdu000104s07jyg8d4e" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -372,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/12/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82/" data-id="ckicphhdy000404s01657h16e" class="article-share-link">Share</a>
+      <a data-url="https://fatpo.github.io/2020/12/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82/" data-id="ckid51vym0004zsosbxv0hp21" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
@@ -429,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/12/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" data-id="ckicphhe0000604s02acx20mi" class="article-share-link">Share</a>
+      <a data-url="https://fatpo.github.io/2020/12/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" data-id="ckid51vyn0006zsos0bky8lf4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
@@ -520,7 +576,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/12/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%B4%A3%E4%BB%BB%E9%93%BE/" data-id="ckicphhe2000a04s06yk2cdt8" class="article-share-link">Share</a>
+      <a data-url="https://fatpo.github.io/2020/12/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%B4%A3%E4%BB%BB%E9%93%BE/" data-id="ckid51vyr000dzsos05ah6w8m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E6%A0%8F/" rel="tag">设计模式专栏</a></li></ul>
@@ -592,7 +648,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/12/01/%E5%B8%AE%E8%8D%94%E6%9E%9D%E6%90%AD%E5%BB%BAdocker%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0/" data-id="ckicphhdx000304s0b9kz3h28" class="article-share-link">Share</a>
+      <a data-url="https://fatpo.github.io/2020/12/01/%E5%B8%AE%E8%8D%94%E6%9E%9D%E6%90%AD%E5%BB%BAdocker%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0/" data-id="ckid51vyl0003zsos7j6x9t1d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
@@ -651,7 +707,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://fatpo.github.io/2020/11/30/5%E5%88%86%E9%92%9F%E7%94%A8hexo%E5%92%8Ctravis%E6%90%AD%E5%BB%BAgithub-pages/" data-id="ckicphhdo000004s0f8v8a460" class="article-share-link">Share</a>
+      <a data-url="https://fatpo.github.io/2020/11/30/5%E5%88%86%E9%92%9F%E7%94%A8hexo%E5%92%8Ctravis%E6%90%AD%E5%BB%BAgithub-pages/" data-id="ckid51vyc0000zsos7cn35ior" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/" rel="tag">奇技淫巧</a></li></ul>
@@ -715,11 +771,15 @@
       <ul>
         
           <li>
-            <a href="/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85/">设计模式之观察者</a>
+            <a href="/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">设计模式之组合模式</a>
           </li>
         
           <li>
             <a href="/2020/12/06/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85/">设计模式之观察者</a>
           </li>
         
           <li>
@@ -728,10 +788,6 @@
         
           <li>
             <a href="/2020/12/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/">设计模式之策略模式</a>
-          </li>
-        
-          <li>
-            <a href="/2020/12/02/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%B4%A3%E4%BB%BB%E9%93%BE/">设计模式之责任链</a>
           </li>
         
       </ul>
