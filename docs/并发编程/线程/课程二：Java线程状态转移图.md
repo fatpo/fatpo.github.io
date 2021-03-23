@@ -1,3 +1,10 @@
+# 写在前面
+建议先看 [课程一：Linux操作系统线程状态转移图](https://fatpo.github.io/#/并发编程/线程/课程一：Linux操作系统线程状态转移图) ，否则您可能会对下面的几个状态感到懵逼~
+
+特别是 JVM的 RUNNABLE 和 操作系统里面的 RUNNING + READY 的关系。
+
+---
+
 # 枚举java线程状态
 
 - <b>NEW</b> - this state represents a new thread which is not yet started.
