@@ -22,6 +22,13 @@ Thread.sleep(long) vs object.wait()
 不同于传统面试题，问sleep释放锁了吗？wait释放锁了吗？
 而是直接告诉你答案，但是让你去证明它，如果你理解够深的，是可以通过小demo来实现的。
 ```
+这里先说一下锁和线程的关系：
+```
+锁：   一般是object，对象来着，对象头markword有4字节，比如偏向锁时markword有23bit表示线程ID。
+线程： 你可以理解为多个少年，抢夺一个貌美如画的少女，少女就是锁，少年就是线程。
+```
+
+
 ## 先证明 object.wait() 可以释放锁
 ```java
 public class A {
