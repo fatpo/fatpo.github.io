@@ -69,12 +69,23 @@ performing I/O operation and lack of main memory caused them to move to secondar
 
 --- 
 
-那么我不禁好奇起来了，进程刚开始创建出来，在`Secondary Memory`，莫非是在硬盘？？
+那么我不禁好奇起来了，进程刚开始创建出来，在`Secondary Memory`，莫非是进程在硬盘？？
 ```
 New (Create) – In this step, the process is about to be created but not yet created, it is the program which is present in secondary memory that will be picked up by OS to create the process.
 ```
+上述解释能看到是`程序在硬盘`，那你说个🔨！
+
+---
+
 既然已经知道了  main memory 和 secondary memory ，那么我盲猜一波原因：
 ```
 受限于CPU物理大小，主存空间有限，否则它巴不得所有的东西都在主存。
 所以必然要分一个主次，暂时还没用到的先放到secondary memory也能理解。
 ```
+
+学习不能陷入细节，应把握脉络，不再继续深究 `secondary memory` ~
+
+
+
+## 参考链接
+* https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/?ref=rp
