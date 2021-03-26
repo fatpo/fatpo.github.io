@@ -185,3 +185,67 @@ The thread
 ```
 你都不曾拥有，谈何失去？
 ```
+
+## 再思考：jdk规定的这种object monitor机制是为了什么
+我们知道 `object.wait()` 和 `object.notify()` 底层就是对`object monitor`的`获取`、`失去`的操作。
+
+这么做有个好处，就是能防止`Lost Wake-Up Problem` !
+
+什么是`Lost Wake-Up Problem`: 
+```
+线程休眠后，再也无法唤醒的问题。
+```
+国哥给你模拟一波`Lost Wake-Up Problem`：
+写一个生产者线程：
+```
+count++;
+object.notify();
+```
+写一个消费者线程：
+```
+while(count<=0){
+    object.wait();
+    count--;
+}
+```
+如果不能保证`object's momitor`的先获取再失去，那么生产者、消费者两个线程代码执行顺序可能是：
+```
+生产者：count++;
+消费者：while(count<=0){
+生产者：object.notify();
+消费者：   object.wait();
+消费者：    count--;
+消费者：}
+```
+生产者线程唤醒了一个还没休眠的消费者线程，导致唤醒无效后，消费者继续休眠，那么发生一个很可怕的事：
+```
+消费者将永远沉睡！
+```
+
+---
+
+如果能保证`object's momitor`的先获取再失去，那么生产者、消费者两个线程代码执行顺序只可能是以下情况：
+
+生产者拿到临界资源锁：
+```
+生产者：count++; // 拥有object's monitor
+生产者：object.notify(); // 唤醒消费者线程，但是因为此时没有消费者（只能说这种编码有问题，要么就让消费者先运行）
+
+消费者：while(count <= 0){ // 这里进不去while条件，至少不会消费者永远沉睡。
+消费者：   object.wait();
+消费者：   count--;
+消费者：}
+```
+消费者拿到临界资源锁，因为count初始化是0，所以消费者线程走到`object.wait()`后让出了`object's monitor`：
+```
+消费者：while(count<=0){   // 拥有object's monitor
+消费者：   object.wait();  // 这里让出了object's monitor
+
+生产者：count++;  // 这里得到了object's monitor
+生产者：object.notify(); //这里再唤醒消费者线程，并在执行完毕后，让出object's monitor
+
+
+消费者：   count--; // 这里得到了object's monitor，继续往下执行
+消费者：}
+```
+所以，`object's monitor`这种`获取`，`失去`机制能保证 `Lost Wake-Up Problem` 问题不复存焉~
