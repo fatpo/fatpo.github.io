@@ -249,3 +249,6 @@ while(count<=0){
 消费者：}
 ```
 所以，`object's monitor`这种`获取`，`失去`机制能保证 `Lost Wake-Up Problem` 问题不复存焉~
+
+## 参考链接
+* [多线程必考的「生产者 - 消费者」模型，看齐姐这篇文章就够了](https://segmentfault.com/a/1190000024444906)
