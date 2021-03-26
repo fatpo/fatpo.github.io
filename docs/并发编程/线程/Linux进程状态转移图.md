@@ -23,7 +23,8 @@
 
 小编有话说：
 ```
-上面虽然密密麻麻，但仍强烈建议阅读英文doc，因各厂商设计不同，可能状态不一致，但是基本上大同小异：开始、等待运行、运行、等待、结束。
+上面虽然密密麻麻，但仍强烈建议阅读英文doc，因各厂商设计不同，可能状态不一致。
+但是基本上大同小异：开始、等待运行、运行、等待、结束。
 ```
 `linux进程状态` vs `java 线程状态`：
 ```
@@ -83,9 +84,9 @@ New (Create) – In this step, the process is about to be created but not yet cr
 所以必然要分一个主次，暂时还没用到的先放到secondary memory也能理解。
 ```
 
-学习不能陷入细节，应把握脉络，不再继续深究 `secondary memory` ~
+学习不能陷入细节，应把握脉络，不再继续深究 `secondary memory` 。
 
 
 
 ## 参考链接
-* https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/?ref=rp
+* [States of a Process in Operating Systems](https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/?ref=rp)

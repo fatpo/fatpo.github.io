@@ -161,14 +161,13 @@ java的线程状态RUNNABLE = 教科书的线程状态RUNNING + 教科书的线�
 ```
 好的，重新梳理好上面的关系后，我们继续看linux的`S`休眠：
 ```
-S = 休眠 = linux线程状态TASK_INTERRUPTIBLE + linux线程状态TASK_UNINTERRUPTIBLE
+Linux进程状态：S (TASK_INTERRUPTIBLE)，可中断的睡眠状态。
+Linux进程状态：D (TASK_UNINTERRUPTIBLE)，不可中断的睡眠状态。
 ```
-小编有话说：
-```dtd
-具体这些linux休眠状态我就不继续跟踪了，思维跳脱收不住也不好。
-```
+学习不能陷入细节，应把握脉络，不再继续深究中断，有空再额外开篇来学习下`《linux内核异步中断浅析》`。
 
 
 ## 参考链接
-* https://www.geeksforgeeks.org/thread-states-in-operating-systems/
-* https://quant67.com/post/linux/taskstatus.html
+* [Thread States in Operating Systems](https://www.geeksforgeeks.org/thread-states-in-operating-systems/)
+* [linux 中进程的状态](https://quant67.com/post/linux/taskstatus.html)
+* [Linux进程状态解析 之 R、S、D、T、Z、X (主要有三个状态)](https://blog.csdn.net/wudebao5220150/article/details/12919453)
