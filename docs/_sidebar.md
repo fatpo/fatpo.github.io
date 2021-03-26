@@ -6,6 +6,7 @@
       * [Linux线程状态转移图](并发编程/线程/Linux线程状态转移图.md)
       * [Java线程状态转移图](并发编程/线程/Java线程状态转移图.md)
       * [证明sleep不释放锁而wait释放锁](并发编程/线程/证明sleep不释放锁而wait释放锁.md)
+      * [为什么wait必须放在synchronized方法块](并发编程/线程/为什么wait必须放在synchronized方法块.md)
   
 * 设计模式
   * [责任链](设计模式之责任链.md)
