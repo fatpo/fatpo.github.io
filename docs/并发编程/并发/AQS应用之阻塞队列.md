@@ -145,5 +145,5 @@ to be continued...
 
 
 ## 参考链接
-[知乎：面试必考AQS-await和signal的实现原理](https://zhuanlan.zhihu.com/p/113493890)
-[知乎：面试必考AQS-排它锁的申请与释放](https://zhuanlan.zhihu.com/p/111350666)
+- [知乎：面试必考AQS-await和signal的实现原理](https://zhuanlan.zhihu.com/p/113493890)
+- [知乎：面试必考AQS-排它锁的申请与释放](https://zhuanlan.zhihu.com/p/111350666)
