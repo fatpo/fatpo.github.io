@@ -35,7 +35,7 @@
   <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
   <script>
-    function url_parse(url) {
+    function my_url_parse(url) {
       var left = url.indexOf('/#/');
       if(left < 0) {
         return url;
@@ -48,7 +48,7 @@
       return url.substring(left, right);
     }
 
-    gittalk_id = url_parse(location.href);
+    gittalk_id = my_url_parse(location.href);
     if(gittalk_id.length > 45) {
       gittalk_id = md5(gittalk_id);
     }
