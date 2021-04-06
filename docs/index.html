@@ -37,27 +37,6 @@
   <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
   <script>
-    function my_url_parse(url) {
-      var left = url.indexOf('/#/');
-      if(left < 0) {
-        return url;
-      }
-
-      var right = url.lastIndexOf('?');
-      if (right <= 0 || right < left) {
-        right = url.length;
-      }
-      return url.substring(left, right);
-    }
-
-    function my_url_parse2(haha){
-      gittalk_id = my_url_parse(haha);
-      if(gittalk_id.length > 45) {
-        gittalk_id = md5(gittalk_id);
-      }
-      return gittalk_id
-    }
-
     const gitalk = new Gitalk({
       clientID: 'a8c34ab2f901c3c8c00e',
       clientSecret: '725713c037f322254f31e597893996bb4cf9957d',
