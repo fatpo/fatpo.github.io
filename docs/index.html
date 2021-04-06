@@ -7,58 +7,47 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
   <link rel="stylesheet" href="https://unpkg.com/docsify-toc@1.0.0/dist/toc.css">
+  <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
 </head>
 <body>
   <div id="app"></div>
+
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!--插入“toc”模块-->
+  <script src="//unpkg.com/docsify-page-toc/dist/docsify-page-toc.js"></script>
+
   <script>
     window.$docsify = {
       loadSidebar: true,
-      homepage: 'README.md'
+
+      homepage: 'README.md',
+
+      'page-toc': {
+        tocMaxLevel: 3,
+        target: 'h1, h2, h3'
+      },
     }
   </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
 
 
   <!--插入“gitalk评论”模块-->
   <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-  <!--插入“toc”模块-->
-  <script src="https://unpkg.com/docsify-toc@1.0.0/dist/toc.js"></script>
-
-
-  <script src="js/md5.min.js"></script>
   <script>
-
-  const gitalk = new Gitalk({
-    clientID: 'a8c34ab2f901c3c8c00e',
-    clientSecret: '725713c037f322254f31e597893996bb4cf9957d',
-    repo:'fatpo.github.io',
-    owner: 'fatpo',
-    admin: ['fatpo'],
-    // facebook-like distraction free mode
-    distractionFreeMode: false,
-    id: location.pathname,      // Ensure uniqueness and length less than 50
-  });
-
-   window.$docsify = {
-      loadSidebar: true,
-      autoHeader: true,
-
-      toc: {
-        scope: '.markdown-section',
-        headings: 'h1, h2, h3, h4, h5, h6',
-        title: 'Table of Contents',
-      },
-
-      formatUpdated: '{MM}/{DD} {HH}:{mm}',
-      formatUpdated: function(time) {
-        return time;
-      },
-  };
+    const gitalk = new Gitalk({
+      clientID: 'a8c34ab2f901c3c8c00e',
+      clientSecret: '725713c037f322254f31e597893996bb4cf9957d',
+      repo:'fatpo.github.io',
+      owner: 'fatpo',
+      admin: ['fatpo'],
+      // facebook-like distraction free mode
+      distractionFreeMode: false,
+      id: location.pathname,      // Ensure uniqueness and length less than 50
+    });
 </script>
 
 </body>
