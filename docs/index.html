@@ -18,9 +18,9 @@
     window.$docsify = {
       loadSidebar: true,
       homepage: 'README.md',
-      'page-toc': {
-        tocMaxLevel: 3,
-        target: 'h1, h2, h3'
+      toc: {
+        tocMaxLevel: 5,
+        target: 'h2, h3, h4, h5, h6'
       },
     }
   </script>
@@ -28,7 +28,7 @@
 
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="//unpkg.com/docsify-page-toc/dist/docsify-page-toc.js"></script>
+  <script src="//unpkg.com/docsify-plugin-toc"></script>
 
   <!--插入“gitalk评论”模块-->
   <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
