@@ -48,10 +48,15 @@
       return url.substring(left, right);
     }
 
-    gittalk_id = my_url_parse(location.href);
-    if(gittalk_id.length > 45) {
-      gittalk_id = md5(gittalk_id);
+    function my_url_parse2(haha){
+      gittalk_id = my_url_parse(haha);
+      if(gittalk_id.length > 45) {
+        gittalk_id = md5(gittalk_id);
+      }
+      return gittalk_id
     }
+
+
 
     const gitalk = new Gitalk({
       clientID: 'a8c34ab2f901c3c8c00e',
@@ -61,7 +66,7 @@
       admin: ['fatpo'],
       // facebook-like distraction free mode
       distractionFreeMode: false,
-      id: gittalk_id,    // Ensure uniqueness and length less than 50
+      id: my_url_parse2(location.href),    // Ensure uniqueness and length less than 50
     });
 </script>
 
