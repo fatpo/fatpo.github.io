@@ -7,7 +7,9 @@
       * [Java线程状态转移图](并发编程/线程/Java线程状态转移图.md)
       * [证明sleep不释放锁而wait释放锁](并发编程/线程/证明sleep不释放锁而wait释放锁.md)
       * [为什么wait必须放在synchronized方法块](并发编程/线程/为什么wait必须放在synchronized方法块.md)
-   * 并发
+      * [线程模型KLT和ULT](并发编程/线程/线程模型KLT和ULT.md)
+      * [ThreadPoolExecutor线程池原理](并发编程/线程/ThreadPoolExecutor线程池原理.md)
+  * 并发
       * [AQS框架三部曲之全局概览](并发编程/并发/AQS框架三部曲之全局概览.md)
       * [AQS框架三部曲之代码全局分析](并发编程/并发/AQS框架三部曲之代码全局分析.md)
       * [AQS框架三部曲之排它锁的申请与释放](并发编程/并发/AQS框架三部曲之排它锁的申请与释放.md)
