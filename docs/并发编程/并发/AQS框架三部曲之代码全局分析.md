@@ -51,6 +51,14 @@ static final class Node {
 ## AQS的抽象方法
 既然`AQS`是一个抽象队列同步器，它毕竟是个抽象类嘛，有一堆抽象方法需要子类去实现。
 
+这里针对`AQS`出现的方法，做了个粗略的统计和划分：
+![](imgs/2021-04-07-AQS方法总览图.png)
+
+国哥吐槽：
+```dtd
+明明在 processOn.com 好好的图弄出来就变了形，果然图形压力太大了。
+```
+processOn分享链接： [AQS方法总览图](https://www.processon.com/view/link/606d88815653bb5cea08e74b)
 
 
 ## 参考链接
