@@ -45,7 +45,9 @@
   * [设计模式之组合](设计模式/设计模式之组合模式.md)
 * 业务设计
   * [秒杀系统设计](业务设计/秒杀系统设计.md)
-
+* 微服务
+  * SpringCloudAlibaba
+    * [SpringBoot自动装配核心源码剖析](微服务专题/SpringCloudAlibaba/SpringBoot自动装配核心源码剖析.md)
 * docker
 
   * [帮荔枝搭建docker小程序后台](帮荔枝搭建docker小程序后台.md)
