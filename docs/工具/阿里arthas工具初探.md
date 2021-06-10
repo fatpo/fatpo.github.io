@@ -1,4 +1,10 @@
 # 1、启动arthas-demo
+下载`arthas-demo.jar`，再用`java -jar`命令启动：
+```dtd
+wget https://arthas.aliyun.com/arthas-demo.jar;java -jar arthas-demo.jar
+```
+`arthas-demo`是一个很简单的程序，它随机生成整数，再执行因式分解，把结果打印出来。如果生成的随机数是负数，则会打印提示信息。
+
 ![](.阿里arthas工具初探_images/2c412ab4.png)
 
 # 2、启动arthas-boot
@@ -51,3 +57,9 @@ watch demo.MathGame primeFactors returnObj
 ```
 输入 `q` 或者 `Ctrl+C` 退出`watch`命令。
 ![](.阿里arthas工具初探_images/920aacb7.png)
+
+# 8、链接
+阿里动手实验室，传送门：
+```dtd
+https://start.aliyun.com/handson/qDlgqpBT/arthas-basics-cn
+```
