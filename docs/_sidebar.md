@@ -1,6 +1,9 @@
 * 首页
   * [README](README.md)
-  
+* 消息中间件
+  * kafka
+      * 图解kafka实战
+         * [第一课-初始kafka](消息中间件/图解kafka实战/初始kafka.md)
 * JVM
   * JVM整体结构
       * [JVM内存分配过程窥探](JVM/JVM整体架构/JVM内存分配过程窥探.md)
