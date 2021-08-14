@@ -10,7 +10,7 @@
       * 图解kafka实战
          * [第一课-初始kafka](消息中间件/图解kafka实战/第一课初始kafka.md)
          * [第二课-安装zk](消息中间件/图解kafka实战/第二课安装zookeeper.md)
-         * [第三课-安装kafka](docs/消息中间件/图解kafka实战/第三课安装kafka.md)
+         * [第三课-安装kafka](消息中间件/图解kafka实战/第三课安装kafka.md)
 * JVM
   * JVM整体结构
       * [JVM内存分配过程窥探](JVM/JVM整体架构/JVM内存分配过程窥探.md)
