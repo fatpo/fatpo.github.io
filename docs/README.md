@@ -1,15 +1,21 @@
-# 你来了
-
+ps1:
 ```
 后来许多人问我和你在一起的感受，我想到的不是孤单和漫长，而是波澜壮阔的海和天空中闪耀的星光。
 ```
 
-# 如果可以
+ps2:
+```text
+人类的时间碎片不应该导致知识也是碎片的。
 
-- 感觉写的还行的话
-- 点击右上角喵喵，或者点击 [fatpo.github.io](https://github.com/fatpo/fatpo.github.io) 帮国哥点个star~
+构建一个完整后台知识体系，对一个人的思维有一定的帮助。
+```
 
+ps3:
+```text
+感觉写的还行的话 点击右上角喵喵帮国哥点个star~
+```
 
-# 联系方式
-
-- Email：xihuanjianguo@gmail.com
+ps4:
+```text
+Email：xihuanjianguo@gmail.com
+```
