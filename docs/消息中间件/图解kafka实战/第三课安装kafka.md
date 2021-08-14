@@ -7,12 +7,12 @@ wget https://archive.apache.org/dist/kafka/2.0.0/kafka_2.11-2.0.0.tgz
 ```text
 /home/ubuntu/kafka_home/kafka_2.11-2.0.0
 ```
-和zk一样，我们配置下kafka_home，vi /etc/profile:
+和zk一样，我们配置下kafka_home，`vi /etc/profile`:
 ```text
 export KAFKA_HOME=/home/ubuntu/kafka_home/kafka_2.11-2.0.0
 export PATH=$PATH:$KAFKA_HOME/bin
 ```
-别忘记source /etc/profile 生效一下后，验证下:
+别忘记`source /etc/profile` 生效一下后，验证下:
 ```text
 $ echo $KAFKA_HOME
 /home/ubuntu/kafka_home/kafka_2.11-2.0.0
@@ -67,7 +67,7 @@ mkdir -p /tmp/kafka-logs3
 ➜  kafka_2.11-2.0.0 nohup bin/kafka-server-start.sh config/server3.properties > k3.log 2>&1 &
 [3] 8296
 ```
-检查下jps：
+检查下jps是否有3个`Kafka`：
 ```text
 ➜  kafka_2.11-2.0.0 jps
 7952 Kafka
@@ -114,7 +114,7 @@ WatchedEvent state:SyncConnected type:None path:null
 [zk: localhost:2181(CONNECTED) 0] 
 ```
 
-检查下 /brokers/ids 是否有3个brokerId：
+检查下 /brokers/ids 是否有3个brokerId： `[0, 1, 2]`
 ```text
 [zk: localhost:2181(CONNECTED) 16] ls /brokers/ids
 [0, 1, 2]

@@ -16,12 +16,12 @@ wget http://archive.apache.org/dist/zookeeper/zookeeper-3.4.12/zookeeper-3.4.12.
 ```text
 /home/ubuntu/zk_home/zookeeper-3.4.12
 ```
-把zkHome路径存入/etc/profile:
+把zkHome路径存入`/etc/profile`:
 ```text 
 export ZOOKEEPER_HOME=/home/ubuntu/zk_home/zookeeper-3.4.12
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 ```
-别忘记source /etc/profile 生效一下后，验证下:
+别忘记`source /etc/profile` 生效一下后，验证下:
 ```text
 $ echo $ZOOKEEPER_HOME
 /home/ubuntu/zk_home/zookeeper-3.4.12
@@ -70,7 +70,7 @@ clientPort=2181
 ```
 配置文件2：
 ```text
-➜  zookeeper-3.4.12 cat conf/zoo1.cfg 
+➜  zookeeper-3.4.12 cat conf/zoo2.cfg 
 server.0=172.17.0.10:2886:3886
 server.1=172.17.0.10:2887:3887
 server.2=172.17.0.10:2888:3888
@@ -107,7 +107,7 @@ clientPort=2182
 ```
 配置文件3：
 ```text
-➜  zookeeper-3.4.12 cat conf/zoo1.cfg 
+➜  zookeeper-3.4.12 cat conf/zoo3.cfg 
 server.0=172.17.0.10:2886:3886
 server.1=172.17.0.10:2887:3887
 server.2=172.17.0.10:2888:3888
@@ -149,6 +149,17 @@ clientPort=2181
 dataDir=/tmp/zookeeper/data1
 dataLogDir=/tmp/zookeeper/log1
 ```
+```text
+clientPort=2182
+dataDir=/tmp/zookeeper/data2
+dataLogDir=/tmp/zookeeper/log2
+```
+```text
+clientPort=2182
+dataDir=/tmp/zookeeper/data2
+dataLogDir=/tmp/zookeeper/log2
+```
+
 ## 2.3、创建目录
 ```text
 mkdir -p  /tmp/zookeeper/data1/
