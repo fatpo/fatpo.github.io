@@ -8,9 +8,11 @@
 * 消息中间件
   * kafka
       * 图解kafka实战
-         * [第一课-初始kafka](消息中间件/图解kafka实战/第一课初始kafka.md)
-         * [第二课-安装zk](消息中间件/图解kafka实战/第二课安装zookeeper.md)
-         * [第三课-安装kafka](消息中间件/图解kafka实战/第三课安装kafka.md)
+         * [第一课-初始kafka](消息中间件/图解kafka实战/第1课初始kafka.md)
+         * [第二课-安装zk](消息中间件/图解kafka实战/第2课安装zookeeper.md)
+         * [第三课-安装kafka](消息中间件/图解kafka实战/第3课安装kafka.md)
+         * [第四课-用命令生产消费kafka](消息中间件/图解kafka实战/第4课用命令生产消费kafka.md)
+         * [第五课-用java生产消费kafka](消息中间件/图解kafka实战/第5课用java生产消费kafka.md)
 * JVM
   * JVM整体结构
       * [JVM内存分配过程窥探](JVM/JVM整体架构/JVM内存分配过程窥探.md)

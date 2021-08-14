@@ -29,24 +29,24 @@ cp server.properties server3.properties
 config/server1.properties关键配置:
 ```
 broker.id=0
-listeners=PLAINTEXT://localhost:9092
-advertised.listeners=PLAINTEXT://172.17.0.10:9092
+listeners=PLAINTEXT://localhost:9092 # 内网地址，给内网命令行调用
+advertised.listeners=PLAINTEXT://1.116.156.79:9092 # 外网地址，比如给java客户端调用
 log.dirs=/tmp/kafka-logs1
 zookeeper.connect=172.17.0.10:2181,172.17.0.10:2182,172.17.0.10:2183
 ```
 config/server2.properties关键配置:
 ```
 broker.id=1
-listeners=PLAINTEXT://localhost:9093
-advertised.listeners=PLAINTEXT://172.17.0.10:9093
+listeners=PLAINTEXT://localhost:9093 # 内网地址，给内网命令行调用
+advertised.listeners=PLAINTEXT://1.116.156.79:9093 # 外网地址，比如给java客户端调用
 log.dirs=/tmp/kafka-logs2
 zookeeper.connect=172.17.0.10:2181,172.17.0.10:2182,172.17.0.10:2183
 ```
 config/server3.properties关键配置:
 ```
 broker.id=2
-listeners=PLAINTEXT://localhost:9094
-advertised.listeners=PLAINTEXT://172.17.0.10:9094
+listeners=PLAINTEXT://localhost:9094 # 内网地址，给内网命令行调用
+advertised.listeners=PLAINTEXT://1.116.156.79:9094 # 外网地址，比如给java客户端调用
 log.dirs=/tmp/kafka-logs3
 zookeeper.connect=172.17.0.10:2181,172.17.0.10:2182,172.17.0.10:2183
 ```
@@ -60,16 +60,15 @@ mkdir -p /tmp/kafka-logs3
 # 3、启动kafka
 ## 3.1、单机集群启动
 ```text
-➜  kafka_2.11-2.0.0 nohup bin/kafka-server-start.sh config/server1.properties > k1.log 2>&1 &
-[1] 7579
-➜  kafka_2.11-2.0.0 nohup bin/kafka-server-start.sh config/server2.properties > k2.log 2>&1 &
-[2] 7952
-➜  kafka_2.11-2.0.0 nohup bin/kafka-server-start.sh config/server3.properties > k3.log 2>&1 &
-[3] 8296
+nohup bin/kafka-server-start.sh config/server1.properties > k1.log 2>&1 &
+
+nohup bin/kafka-server-start.sh config/server2.properties > k2.log 2>&1 &
+
+nohup bin/kafka-server-start.sh config/server3.properties > k3.log 2>&1 &
 ```
 检查下jps是否有3个`Kafka`：
 ```text
-➜  kafka_2.11-2.0.0 jps
+jps
 7952 Kafka
 29873 QuorumPeerMain
 1490 ZooKeeperMain
@@ -79,7 +78,12 @@ mkdir -p /tmp/kafka-logs3
 29963 QuorumPeerMain
 7579 Kafka
 ```
-
+怎么关掉kafka：
+```text
+bin/kafka-server-stop.sh config/server1.properties 
+bin/kafka-server-stop.sh config/server2.properties 
+bin/kafka-server-stop.sh config/server3.properties
+```
 
 ## 3.2、去zk检查kafka是否启动
 进入zk：
@@ -125,7 +129,7 @@ WatchedEvent state:SyncConnected type:None path:null
 
 创建topic:
 ```
-➜  kafka_2.11-2.0.0 bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test --replication-factor 1 --partitions 1 
+bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic test --replication-factor 1 --partitions 1 
 Created topic "test".
 ```
 
@@ -137,7 +141,7 @@ Created topic "test".
 
 用zk命令查看topic：
 ```
-➜  kafka_2.11-2.0.0 bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic test 
+bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic test 
 Topic:test	PartitionCount:1	ReplicationFactor:1	Configs:
 	Topic: test	Partition: 0	Leader: 1	Replicas: 1	Isr: 1
 ```
