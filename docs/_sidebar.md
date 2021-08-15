@@ -12,7 +12,7 @@
          * [第二课-安装zk](消息中间件/图解kafka实战/第2课安装zookeeper.md)
          * [第三课-安装kafka](消息中间件/图解kafka实战/第3课安装kafka.md)
          * [第四课-用命令生产消费kafka](消息中间件/图解kafka实战/第4课用命令生产消费kafka.md)
-         * [第五课-用java生产消费kafka](消息中间件/图解kafka实战/第5课用java生产消费kafka.md)
+         * [第五课-用java生产消费kafka](docs/消息中间件/图解kafka实战/第5课用java生产消费kafka初级版.md)
          * [第六课-认识下服务器重要参数.md](消息中间件/图解kafka实战/第6课认识下服务器重要参数.md)
 * JVM
   * JVM整体结构
