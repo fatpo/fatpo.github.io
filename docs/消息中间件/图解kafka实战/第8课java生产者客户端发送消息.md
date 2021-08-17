@@ -33,9 +33,11 @@ class ProducerRecord{
     public ProducerRecord(String topic, V value);
 }
 ```
-实际上，无论是初版还是升级版，都是用到了  `public ProducerRecord(String topic, V value);`，最简单的发送消息。
-
-什么分区，什么时间戳，什么分区器key，暂时玩蛋去，用到再说。
+实际上，前面java生产者客户端无论是[初版](https://github.com/fatpo/kafka-demo/blob/main/kakfa/src/main/java/ProducerDemo.java)还是[规范版](https://github.com/fatpo/kafka-demo/blob/main/kakfa/src/main/java/ProducerDemoV2.java)，都是用到了
+```
+public ProducerRecord(String topic, V value);
+```
+最简单的发送消息模式，什么分区，什么时间戳，什么分区器key，暂时玩蛋去，用到再说。
 
 # 3、发送消息的2种模式
 ```java

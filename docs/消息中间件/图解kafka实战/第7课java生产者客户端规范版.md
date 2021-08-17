@@ -1,27 +1,15 @@
 # 1、git代码库
-```text
-git@github.com:fatpo/kafka-demo.git
-```
-或者：
-```text
-https://github.com/fatpo/kafka-demo.git
-```
 
-代码：
-```text
-https://github.com/fatpo/kafka-demo/blob/main/kakfa/src/main/java/ProducerDemoV2.java
-```
+* [ssh git](git@github.com:fatpo/kafka-demo.git)
+* [http git](https://github.com/fatpo/kafka-demo.git)
+* [生产者客户端代码](https://github.com/fatpo/kafka-demo/blob/main/kakfa/src/main/java/ProducerDemoV2.java)
 
-公开声明:
-```text
-实际上，我外网地址，随便大家连，如果我没关闭的话。
-```
 
 # 2、java生产者客户端正规化版本
 改动点：
 * 配置初始化正规，多一个 `initConfig()`
 * 用kafka的常量`ProducerConfig.BOOTSTRAP_SERVERS_CONFIG`、`ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG`、`ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG`做Key减少人为失误
-* 可以配置`client.id`
+* 可以配置`client.id`，这是表示生产者客户端一个标识iD，如果不设置：KafkaProducer会自动生成一个非空字符串，内容形式如`producer-1`，`producer-2`
 
 代码如下：
 ```java
