@@ -77,7 +77,7 @@ class Demo{
     }   
 }
 ```
-这种异步要结合业务，在合适的时机，get()即可。
+这种异步要结合业务，在合适的时机，get()即可，返回`RecordMetadata`，这是一个存放了`topic`,`partition`,`offset`的结构体。
 
 但是异步代码，`合适时机`很难把握，你怎么知道它什么时候准备好数据？不知道的。
 
@@ -105,3 +105,68 @@ class Demo{
 ```
 
 实际上，根据国哥的经验，在异步处理上，用callback比future要可读性好，稍微绕一下而已。
+
+# 4、代码示例
+完整代码如下：
+```java
+import org.apache.kafka.clients.producer.*;
+
+import java.util.Properties;
+import java.util.concurrent.Future;
+
+public class ProducerDemoV4Async {
+    public static final String brokerList = "1.116.156.79:9092,1.116.156.79:9093,1.116.156.79:9094";
+    public static final String topic = "test2";
+
+    public static Properties initConfig() {
+        Properties properties = new Properties();
+        // 诸如“key.serializer”、“max.request.size”、“interceptor.classes”之类的字符串经常由于人为因素而书写错误
+        // kafka 帮我们提供了一些constant常量
+        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokerList);
+        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+                "org.apache.kafka.common.serialization.StringSerializer");
+        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+                "org.apache.kafka.common.serialization.StringSerializer");
+        properties.put(ProducerConfig.CLIENT_ID_CONFIG, "producer.client.id.demo");
+        properties.put(ProducerConfig.RETRIES_CONFIG, 10);
+        return properties;
+    }
+
+    public static void main(String[] args) {
+        Properties properties = initConfig();
+
+        System.out.println("send a message: hello, Kafka!");
+        KafkaProducer<String, String> producer =
+                new KafkaProducer<>(properties);
+        ProducerRecord<String, String> record =
+                new ProducerRecord<>(topic, "hello, Kafka!");
+        // callback方式
+        try {
+            producer.send(record, new Callback() {
+                @Override
+                public void onCompletion(RecordMetadata metadata, Exception exception) {
+                    if (exception != null) {
+                        exception.printStackTrace();
+                    } else {
+                        System.out.println("[send callback -1] topic: " + metadata.topic() + ", partition: " +
+                                metadata.partition() + ", offset: " + metadata.offset());
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // future方式
+        try {
+            Future<RecordMetadata> future = producer.send(record);
+            RecordMetadata metadata = future.get();
+            System.out.println("[send callback -2] topic: " + metadata.topic() + ", partition: " +
+                    metadata.partition() + ", offset: " + metadata.offset());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        producer.close();
+    }
+}
+```
