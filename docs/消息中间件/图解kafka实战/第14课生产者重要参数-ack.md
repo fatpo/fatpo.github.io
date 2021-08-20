@@ -65,4 +65,5 @@ ack=1：producer等待broker的ack，partition的leader落盘成功后返回ack�
 
 
 # 4、参考
-[横趟！面试中遇到的 ZooKeeper 问题](https://www.mdnice.com/writing/fa3d3ba2607e44ef857a3954537232bb)
+* [横趟！面试中遇到的 ZooKeeper 问题](https://www.mdnice.com/writing/fa3d3ba2607e44ef857a3954537232bb)
+* [Kafka数据可靠性保证三板斧-ACK/ISR/HW](https://cloud.tencent.com/developer/article/1665709)

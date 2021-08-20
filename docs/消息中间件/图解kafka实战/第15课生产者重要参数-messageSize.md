@@ -158,4 +158,7 @@ private long sendProducerData(long now) {
 ```
 
 # 参考资料
-[彻底搞懂 Kafka 消息大小相关参数设置的规则](https://cloud.tencent.com/developer/article/1633494)
+* [彻底搞懂 Kafka 消息大小相关参数设置的规则](https://cloud.tencent.com/developer/article/1633494)
+* [kafka官网配置](https://kafka.apache.org/20/documentation.html#brokerconfigs)
+* [how-to-send-large-messages-in-kafka](https://www.hadoopinrealworld.com/how-to-send-large-messages-in-kafka/)
+* [kafka生产者客户端发送逻辑简析](http://chow.ink/2020/04/09/kafka生产者客户端发送逻辑简析/)
