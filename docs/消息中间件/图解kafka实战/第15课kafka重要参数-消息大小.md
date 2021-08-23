@@ -157,6 +157,48 @@ private long sendProducerData(long now) {
 2）限制发送请求大小
 ```
 
+## 5.2、batch size
+![kafka生产者消息-V20210823.png](./imgs/第15课生产者重要参数-messageSize-1629728885678.png)
+
+生产者默认的`max request size` = 1MB，这么说可以容纳 `64个`batch咯。
+
+# 6、消费者消息大小
+
+## 6.1、fetch.min.bytes
+该参数用来配置 Consumer 在一次拉取请求（调用 poll() 方法）中能从 Kafka 中拉取的最小数据量，默认值为`1（B）`。
+
+Kafka 在收到 Consumer 的拉取请求时，如果返回给 Consumer 的数据量小于这个参数所配置的值，
+那么它就需要进行等待，直到数据量满足这个参数的配置大小。
+
+可以适当调大这个参数的值以提高一定的吞吐量，不过也会造成额外的延迟（latency），对于延迟敏感的应用可能就不可取了。
+
+## 6.2、fetch.max.bytes
+该参数与 fetch.min.bytes 参数对应，它用来配置 Consumer 在一次拉取请求中从Kafka中拉取的最大数据量，默认值为`52428800（B），也就是50MB`。
+
+如果这个参数设置的值比任何一条写入 Kafka 中的消息要小，那么会不会造成无法消费呢？
+该参数设定的不是绝对的最大值，如果在第一个非空分区中拉取的第一条消息大于该值，那么该消息将仍然返回，以确保消费者继续工作。
+
+Kafka 中所能接收的最大消息的大小通过服务端参数 message.max.bytes（对应于主题端参数 max.message.bytes）来设置。
+
+## 6.3、fetch.max.wait.ms
+这个参数也和 fetch.min.bytes 参数有关，如果 Kafka 仅仅参考 fetch.min.bytes 参数的要求，
+那么有可能会一直阻塞等待而无法发送响应给 Consumer，显然这是不合理的。
+
+fetch.max.wait.ms 参数用于指定 Kafka 的等待时间，默认值为`500（ms）`。
+
+如果 Kafka 中没有足够多的消息而满足不了 fetch.min.bytes 参数的要求，那么最终会等待500ms。
+
+这个参数的设定和 Consumer 与 Kafka 之间的延迟也有关系，如果业务应用对延迟敏感，那么可以适当调小这个参数。
+
+## 6.4、max.partition.fetch.bytes
+这个参数用来配置从每个分区里返回给 Consumer 的最大数据量，默认值为1048576（B），即1MB。
+
+这个`max.partition.fetch.bytes`参数与 fetch.max.bytes 参数相似，只不过`max.partition.fetch.bytes`用来限制一次拉取中每个分区的消息大小，
+而`fetch.max.bytes`用来限制一次拉取中整体消息的大小。
+
+同样，如果这个参数设定的值比消息的大小要小，那么也不会造成无法消费，Kafka 为了保持消费逻辑的正常运转不会对此做强硬的限制。
+
+
 # 参考资料
 * [彻底搞懂 Kafka 消息大小相关参数设置的规则](https://cloud.tencent.com/developer/article/1633494)
 * [kafka官网配置](https://kafka.apache.org/20/documentation.html#brokerconfigs)

@@ -1,12 +1,12 @@
-# 1、ack是似曾相似的配置
+# 1、acks是似曾相似的配置
 不知道是不是觉得在哪里见过类似的设定：
-* ack = 0， 不管发送成功与否，ack 设置为0可以达到最大的吞吐量
-* ack = 1， leader副本写入数据后，就算是发送成功，不管其他副本
-* ack = -1或all， 全部副本接受完毕，才算写入kafka成功，ack 设置为-1可以达到最强的可靠性
+* acks = 0， 不管发送成功与否，ack 设置为0可以达到最大的吞吐量
+* acks = 1， leader副本写入数据后，就算是发送成功，不管其他副本
+* acks = -1或all， 全部副本接受完毕，才算写入kafka成功，acks 设置为-1可以达到最强的可靠性
 
-是否有额外的参数配置，比如ack可不可以等于2？这种配置我总感觉在哪里见过，是哪个中间件呢，比如：zk？rabbitmq？
-* ack = 2， leader副本和1个follower副本写入成功即可，不管其他副本
-* ack = 3， leader副本和2个follower副本写入成功即可，不管其他副本
+是否有额外的参数配置，比如acks可不可以等于2？这种配置我总感觉在哪里见过，是哪个中间件呢，比如：zk？rabbitmq？
+* acks = 2， leader副本和1个follower副本写入成功即可，不管其他副本
+* acks = 3， leader副本和2个follower副本写入成功即可，不管其他副本
 
 # 2、ack数据类型竟然不是int
 对了，这个参数是个string，而不是int：
@@ -38,26 +38,26 @@ follower副本会不断向leader副本发起同步请求，`尝试` 拉取最新
 
 因为客观原因，follower副本可能有网络延迟？可能JVM遇到stop the world？总之就是有可能在`规定时间内`没同步成功，那么就会移除ISR，进入`OSR(Out-Sync Replicas)`。
 
-## 3.4、ack三种参数是什么?
-* ack = 0， 不管发送成功与否，ack 设置为0可以达到最大的吞吐量
-* ack = 1， `kafka默认配置`，leader副本写入数据后，就算是发送成功，不管其他副本是否同步
-* ack = -1或all， 全部副本接受完毕，才算写入kafka成功，ack 设置为-1可以达到最强的可靠性。
+## 3.4、acks三种参数是什么?
+* acks = 0， 不管发送成功与否，ack 设置为0可以达到最大的吞吐量
+* acks = 1， `kafka默认配置`，leader副本写入数据后，就算是发送成功，不管其他副本是否同步
+* acks = -1或all， 全部副本接受完毕，才算写入kafka成功，ack 设置为-1可以达到最强的可靠性。
 
-## 3.5、ack=-1是否一定不会丢数据?
+## 3.5、acks=-1是否一定不会丢数据?
 答案：不是的。
 
 因为可能ISR里面只有一个leader副本，它没有备份，所以leader副本收到消息后还没处理就宕机了，数据也会丢失。
 
 
-## 3.6、ack=-1可能造成数据重复，是真的吗？
+## 3.6、acks=-1可能造成数据重复，是真的吗？
 
-ack=-1（all）：producer等待broker的ack，partition的leader和follower全部落盘成功后才返回ack。
+acks=-1（all）：producer等待broker的ack，partition的leader和follower全部落盘成功后才返回ack。
 
 但是如果在follower同步完成后，broker发送ack之前，leader发生故障，导致没有返回ack给Producer，
 
 由于失败重试机制，又会给新选举出来的leader发送数据，造成数据重复。
 
-## 3.7、ack=1可能造成数据丢失，是真的吗？
+## 3.7、acks=1可能造成数据丢失，是真的吗？
 
 ack=1：producer等待broker的ack，partition的leader落盘成功后返回ack。
 
