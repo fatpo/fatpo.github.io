@@ -51,6 +51,6 @@ Gzip是一种压缩文件格式并且也是一个在类 Unix 上的一种文件�
 
 在1992年10月31日第一次公开发布，版本号0.1，1993年2月，发布了1.0版本。
 
-OpenBSD中所包含的gzip版本实际上是compress程序，其对gzip文件的支持在OpenBSD 3.4中被添加，此处的g代表免费（gratis。
+OpenBSD中所包含的gzip版本实际上是compress程序，其对gzip文件的支持在OpenBSD 3.4中被添加，此处的g代表免费（gratis）。
 ```
 
