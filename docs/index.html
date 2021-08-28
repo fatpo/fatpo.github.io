@@ -52,7 +52,27 @@
         fontsize:'0.9em',
         color:'rgb(90,90,90)',
         language:'chinese'
-      }
+      },
+      plugins: [
+        function (hook, vm) {
+          // load livere
+          hook.beforeEach(function(content) {
+              var comment = "<div id='lv-container' data-id='city' data-uid='MTAyMC81MzkyMy8zMDM5NQ=='></div>\n\n----\n"
+              return content + comment;
+          });
+
+          hook.doneEach(function() {
+             (function(d, s) {
+                 var j, e = d.getElementsByTagName(s)[0];
+                 if (typeof LivereTower === 'function') { return; }
+                 j = d.createElement(s);
+                 j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                 j.async = true;
+                 e.parentNode.insertBefore(j, e);
+             })(document, 'script');
+          });
+        },
+      ]
     }
 
 </script>
@@ -85,50 +105,24 @@
 <!--<script src="docsify-toc-min.js"></script>-->
 <script src="md5.min.js"></script>
 
-<!--插入“gitalk评论”模块-->
-<script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
-<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script>
-    function my_url_parse(url) {
-      var left = url.indexOf('/#/');
-      if(left < 0) {
-        return url;
-      }
 
-      var right = url.lastIndexOf('?');
-      if (right <= 0 || right < left) {
-        right = url.length;
-      }
-      return url.substring(left, right);
-    }
+<!--&lt;!&ndash; 来必力City版安装代码 &ndash;&gt;-->
+<!--<div id="lv-container" data-id="city" data-uid="MTAyMC81MzkyMy8zMDM5NQ==">-->
+<!--    <script type="text/javascript">-->
+<!--   (function(d, s) {-->
+<!--       var j, e = d.getElementsByTagName(s)[0];-->
 
-    function my_url_parse2(haha){
-      gittalk_id = my_url_parse(haha);
-      if(gittalk_id.length > 45) {
-        gittalk_id = md5(gittalk_id);
-      }
-      return gittalk_id
-    }
+<!--       if (typeof LivereTower === 'function') { return; }-->
 
-    const gitalk = new Gitalk({
-      clientID: 'a8c34ab2f901c3c8c00e',
-      clientSecret: '725713c037f322254f31e597893996bb4cf9957d',
-      repo:'fatpo.github.io',
-      owner: 'fatpo',
-      admin: ['fatpo'],
-      // facebook-like distraction free mode
-      distractionFreeMode: false,
-      id: my_url_parse2(location.hash),
-    });
+<!--       j = d.createElement(s);-->
+<!--       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';-->
+<!--       j.async = true;-->
 
-    // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
-    window.onhashchange = function(event){
-      if(event.newURL.split('?')[0] !== event.oldURL .split('?')[0]) {
-        location.reload()
-      }
-    }
-
-</script>
-
+<!--       e.parentNode.insertBefore(j, e);-->
+<!--   })(document, 'script');-->
+<!--	</script>-->
+<!--    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>-->
+<!--</div>-->
+<!-- City版安装代码已完成 -->
 </body>
 </html>

@@ -24,6 +24,9 @@
          * [第14课-kafka重要参数-生产者acks](消息中间件/图解kafka实战/第14课kafka重要参数-生产者acks.md)
          * [第15课-kafka重要参数-消息大小](消息中间件/图解kafka实战/第15课kafka重要参数-消息大小.md)
          * [第16课-kafka重要参数-重试和乱序](消息中间件/图解kafka实战/第16课kafka重要参数-生产者重试和乱序.md)
+         * [第17课-kafka重要参数-压缩](消息中间件/图解kafka实战/第17课kafka重要参数-压缩.md)
+         * [第18课-kafka重要参数-生产者linger](消息中间件/图解kafka实战/第18课kafka重要参数-生产者linger.md)
+         * [第19课-kafka重要参数-socket缓冲区大小](消息中间件/图解kafka实战/第19课kafka重要参数-生产者socket缓冲区大小.md)
 * JVM
   * JVM整体结构
       * [JVM内存分配过程窥探](JVM/JVM整体架构/JVM内存分配过程窥探.md)
