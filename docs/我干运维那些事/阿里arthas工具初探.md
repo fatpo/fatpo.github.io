@@ -59,7 +59,4 @@ watch demo.MathGame primeFactors returnObj
 ![](.阿里arthas工具初探_images/920aacb7.png)
 
 # 8、链接
-阿里动手实验室，传送门：
-```dtd
-https://start.aliyun.com/handson/qDlgqpBT/arthas-basics-cn
-```
+* 阿里动手实验室，(传送门)[https://start.aliyun.com/handson/qDlgqpBT/arthas-basics-cn]
