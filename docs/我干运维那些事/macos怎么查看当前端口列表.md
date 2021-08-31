@@ -6,14 +6,18 @@ loginwind   137 ouyang    7u  IPv4 0x9cef83178bd2c065      0t0  UDP *:*
 rapportd    366 ouyang    5u  IPv4 0x9cef83178db23935      0t0  UDP *:*
 rapportd    366 ouyang    6u  IPv4 0x9cef83178db23c25      0t0  UDP *:*
 rapportd    366 ouyang    9u  IPv4 0x9cef83178bd2b795      0t0  UDP *:*
-Google      371 ouyang   52u  IPv4 0x9cef831790b8d4f5      0t0  UDP *:*
-assistant   375 ouyang   14u  IPv4 0x9cef83178db26b25      0t0  UDP *:*
-identitys   382 ouyang   26u  IPv4 0x9cef83178bd2e985      0t0  UDP *:*
+Google      715 ouyang   37u  IPv4 0x9cef8317977c12a5      0t0  TCP 127.0.0.1:62722->127.0.0.1:4780 (CLOSE_WAIT)
+Google      715 ouyang   38u  IPv4 0x9cef83179460156d      0t0  TCP 127.0.0.1:62728->127.0.0.1:4780 (CLOSE_WAIT)
+Google      715 ouyang   39u  IPv4 0x9cef831797833ccd      0t0  TCP 127.0.0.1:62729->127.0.0.1:4780 (CLOSE_WAIT)
+Google      715 ouyang   43u  IPv4 0x9cef831794580e55      0t0  TCP 127.0.0.1:62737->127.0.0.1:4780 (CLOSE_WAIT)
+Google      715 ouyang   48u  IPv4 0x9cef8317978a19bd      0t0  TCP 127.0.0.1:62743->127.0.0.1:4780 (CLOSE_WAIT)
+Google      715 ouyang   49u  IPv4 0x9cef8317945faf95      0t0  TCP 127.0.0.1:62748->127.0.0.1:4780 (CLOSE_WAIT)
 ```
 其中:
 ```
 -i4 means only show ipv4 address and ports -P and -n fast output
 ```
+
 只查看监听端口：
 ```
 ➜  ~ lsof -Pn -i4 | grep LISTEN
@@ -22,6 +26,8 @@ clashr-da   469 ouyang   13u  IPv4 0x9cef83178f0736f5      0t0  TCP 127.0.0.1:47
 clashr-da   469 ouyang   14u  IPv4 0x9cef83178f07411d      0t0  TCP 127.0.0.1:4788 (LISTEN)
 Python    24811 ouyang    5u  IPv4 0x9cef83179457a6f5      0t0  TCP 127.0.0.1:8000 (LISTEN)
 ```
+
+国哥喜欢这个命令，容易打，而且能看ESTABLISHED状态.
 
 # 2、lsof -PiTCP -sTCP:LISTEN
 和上面的差不多，参数些许变化而已：查出ipv4和ipv6的监听。
