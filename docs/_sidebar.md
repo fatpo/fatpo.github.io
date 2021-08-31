@@ -80,7 +80,8 @@
     * [SpringBoot自动装配核心源码剖析](微服务专题/SpringCloudAlibaba/SpringBoot自动装配核心源码剖析.md)
 * 我干运维那些事儿
   * [macos怎么查看当前端口列表](我干运维那些事/macos怎么查看当前端口列表.md)
-  * [mysql改为ssh连接遇到reading initial communication packet](我干运维那些事/mysql改为ssh连接遇到reading-initial-communication-packet.md)
+  * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)
+  * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
   * [帮荔枝搭建docker小程序后台](我干运维那些事/帮荔枝搭建docker小程序后台.md)
   * [阿里arthas工具初探](我干运维那些事/阿里arthas工具初探.md)  
 * 杂谈
