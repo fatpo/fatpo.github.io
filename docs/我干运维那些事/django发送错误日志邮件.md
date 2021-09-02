@@ -5,6 +5,9 @@ Django==3.2
 ```
 搞了个项目，但是不能人一直盯着日志嘛，所以想着出了错误日志发邮件给我。
 
+有感而发，写于 `2021年9月2日22:37:33`。
+
+
 # 2、效果
 我使用qq邮箱作为邮件服务器，所以要先去qq邮箱设置下允许SMTP服务。
 
@@ -95,7 +98,7 @@ logger = logging.getLogger("mdjango")
 ```py
 'mail_admins_handler': {
     'level': 'ERROR',
-    'class': 'SecPhone.mail.MyEmailHandler',
+    'class': 'myapp.mail.MyEmailHandler',
     'formatter': 'standard',
     'include_html': True,
 },
@@ -136,10 +139,10 @@ class MyEmailHandler(AdminEmailHandler):
         mail.send(fail_silently=False)
 ```
 
-# 4、django闭坑指南
+# 4、发送邮件避坑指南
 ## 4.1、坑1：打开了debug
 ```dtd
-记得debug=False, 否则不会发.
+记得debug=False, 否则不会发
 ```
 
 ## 4.2、坑2：没有开smtp
@@ -156,7 +159,7 @@ class MyEmailHandler(AdminEmailHandler):
     'include_html': True,
 },
 ```
-这里不建议用默认的，因为默认的会把整个settings.py给带过去，非常长，而且暴露了很多重要配置，这是不对。
+这里不建议用默认的，因为默认的会把整个`settings.py`给带过去，非常长，而且暴露了很多重要配置，这是不对。
 
 而且还不能定制，不好。比如默认的`django.utils.log.AdminEmailHandler`会触发两条ERROR错误，导致收到2次邮件。
 
@@ -168,13 +171,11 @@ if not getattr(record, "message", None):
 
 ## 4.4、坑4：vultr没有开启25端口
 这个我们不能自己开，要去vultr提工单。
+![](./imgs/django发送错误日志邮件-1630593362395.png)
 
 这里还有个小插曲，就是vultr说是给我开了25端口，但需要我自己重启。
 
 我重启后，整个服务器所有的端口都无法telnet，只能另外开工单去反馈这件事，前前后后和vultr的工程师对线了2小时。
+![](./imgs/django发送错误日志邮件-1630593406500.png)
 
 哎。
-
-
-
-写于 2021年09月02日22:27:46。
