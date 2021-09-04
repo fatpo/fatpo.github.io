@@ -79,6 +79,7 @@
   * SpringCloudAlibaba
     * [SpringBoot自动装配核心源码剖析](微服务专题/SpringCloudAlibaba/SpringBoot自动装配核心源码剖析.md)
 * 我干运维那些事儿
+  * [ubuntu18.04开启supervisor开机自启动](我干运维那些事/ubuntu18.04开启supervisor开机自启动.md)
   * [django发送错误日志邮件](我干运维那些事/django发送错误日志邮件.md)
   * [macos怎么查看当前端口列表](我干运维那些事/macos怎么查看当前端口列表.md)
   * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)

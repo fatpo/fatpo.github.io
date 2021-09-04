@@ -21,11 +21,11 @@ sudo sysv-rc-conf
 
 # 2、查看是否开机启动
 ```
-root@vsim:~# sysv-rc-conf --list mysql
+root@fatpo:~# sysv-rc-conf --list mysql
 mysql        0:off	1:off	2:on	3:on	4:on	5:on	6:off
-root@vsim:~# sysv-rc-conf --list redis-server
+root@fatpo:~# sysv-rc-conf --list redis-server
 redis-server 0:off	1:off	2:on	3:on	4:on	5:on	6:off
-root@vsim:~# sysv-rc-conf --list nginx
+root@fatpo:~# sysv-rc-conf --list nginx
 nginx        0:off	1:off	2:on	3:on	4:on	5:on	6:off
 ```
 至此，看到3个关键的服务`nginx`,`mysql`,`redis`，都有`2，3，4，5`级别的开机启动，就很安心啦~
@@ -65,7 +65,7 @@ N 5
 
 提前给大家看看几个目录，换个脸熟，国哥不说他们是干嘛的：
 ```
-root@vsim:~# ll /etc/rc
+root@fatpo:~# ll /etc/rc
 rc0.d/ rc1.d/ rc2.d/ rc3.d/ rc4.d/ rc5.d/ rc6.d/ rcS.d/
 ```
 
@@ -84,7 +84,7 @@ rc0.d/ rc1.d/ rc2.d/ rc3.d/ rc4.d/ rc5.d/ rc6.d/ rcS.d/
 ## 4.3、ubuntu18.04启动文件夹
 ubuntu18.04开机自启动脚本是都放到级别为2的文件夹，也就是/etc/rc2.d/目录：
 ```
-root@vsim:~# ll /etc/rc2.d/
+root@fatpo:~# ll /etc/rc2.d/
 total 12
 drwxr-xr-x  2 root root 4096 Aug 31 09:34 ./
 drwxr-xr-x 99 root root 4096 Aug 31 09:34 ../
