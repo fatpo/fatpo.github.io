@@ -1,7 +1,7 @@
 # 1、背景
 最近不是搞了个小项目嘛，当一回运维，在测试开机自启动。
 
-之前发现了一个神器：sysc-rc-conf，[传送门](https://fatpo.github.io/#/我干运维那些事/ubuntu18.04用sysv-rc-conf管理开机自启动)
+之前发现了一个神器：sysc-rc-conf，[传送门](https://fatpo.github.io/#/我干运维那些事/ubuntu18.04用sysv-rc-conf管理开机自启动)。
 
 这波啊，这波是`学以致用`。
 
@@ -9,6 +9,8 @@ supervisor 版本：
 ```
 supervisor==4.2.2
 ```
+
+本笔记写于：`2021年09月04日11:11:16`。
 
 # 2、测试效果
 重启后，supervisord竟然没有开机自启动，但是明明我用了：
@@ -25,6 +27,7 @@ supervisord        0:off    1:off    2:on    3:on    4:on    5:on    6:off
 索性就继续研究下这个软件：`sysv-rc-conf`，是不是哪里没弄对。
 
 看到help有一个说明： +/= 表示启动一下，好家伙，试了下，发现异常。
+![](imgs/2021-09-04-SMJYcD.png)
 
 redis服务是成功的：
 ![](imgs/2021-09-04-2.png)
@@ -32,7 +35,7 @@ redis服务是成功的：
 supervisord服务是失败的，而且有明显的错误提示：`找不到/etc/init.d/supervisord`：
 ![](imgs/2021-09-04-1.png)
 
-所以这个`sysv-rc-conf`就是帮忙管理一下`/etc/init.d/`文件夹下的启动服务脚本。。。
+所以这个`sysv-rc-conf`就是帮忙管理一下`/etc/init.d/`文件夹下的启动服务脚本。。。仅此而已。
 
 # 4、解决方案
 先在百度找一个`/etc/init.d/supervisor` 的文件：
@@ -242,7 +245,3 @@ chmod +x /etc/init.d/supervisor
 
 # 参考
 * [华为云-精选文章-安装supervisor(4.0.3)](https://www.huaweicloud.com/articles/e6fb6bb33b16ecfec6e02c0e611e4f03.html)
-
-
-
-写于 2021年09月04日11:11:16。
