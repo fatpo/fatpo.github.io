@@ -240,4 +240,9 @@ chmod +x /etc/init.d/supervisor
 第一时间想去google，明明身上有很多检查手段，浪费一个晚上去谷歌，哎。
 ```
 
+# 参考
+* [华为云-精选文章-安装supervisor(4.0.3)](https://www.huaweicloud.com/articles/e6fb6bb33b16ecfec6e02c0e611e4f03.html)
+
+
+
 写于 2021年09月04日11:11:16。
