@@ -30,9 +30,14 @@
     * csdn 全是python的笔记：blog.csdn.net/emaste_r
     * 后期接触go和java后开始厌恶python
     * python3的类型推导出来后又稍微不那么厌恶
-
+* 运维能力
+    * docker 在几个小项目上使用nginx、redis、mysql的docker镜像快速部署
+    * ubuntu18.04 怎么加固
+    * vultr的骚套路略懂一二
+    * linux重启自启动能力get
+    
     
 
 期待成为一个更好的人。
 
-写于 2021年09月07日13:58:51。
+写于2021年09月07日。
