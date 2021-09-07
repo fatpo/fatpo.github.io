@@ -24,7 +24,7 @@
 * 架构能力
     * 借弦哥的《代码整洁之道》，读过几章
 * 算法与数据结构
-    * Leetcode 200+题，100easy+100medium，但除了那些经典的，大多都过目就完了
+    * Leetcode 200+题，100easy+100medium，但除了那些经典的，大多都过目就忘了
 * python
     * 3年+python 开发经验
     * csdn 全是python的笔记：blog.csdn.net/emaste_r
