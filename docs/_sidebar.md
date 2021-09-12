@@ -35,7 +35,8 @@
 * JVM
   * JVM整体结构
       * [JVM内存分配过程窥探](JVM/JVM整体架构/JVM内存分配过程窥探.md)
-      * [JVM内存模型](JVM/JVM整体架构/JVM内存模型.md)
+      * [JVM内存模型](docs/JVM/JVM整体架构/JMM内存模型.md)
+
   * 类加载
       * [类加载过程详解](JVM/类加载/类加载过程详解.md)
       * [三个加载器](JVM/类加载/三个加载器.md)
@@ -44,6 +45,11 @@
   * GC
       * [垃圾收集算法](JVM/GC/垃圾收集算法.md)
       * [垃圾收集器](JVM/GC/垃圾收集器.md)
+  * Java线程  
+      * [Java多线程累加int的最佳实践](JVM/Java线程/Java多线程累加int的最佳实践.md)
+      * [什么是Java线程安全](JVM/Java线程/什么是Java线程安全.md)
+      * [synchronized是什么](docs/JVM/Java线程/synchronized是什么.md)
+      * [volatile是什么](docs/JVM/Java线程/volatile是什么.md)
   * 调优
       * [生产环境CPU飙升怎么办](JVM/调优/生产环境CPU飙升怎么办.md)
       * [生产环境内存飙升怎么办](JVM/调优/生产环境内存飙升怎么办.md)
