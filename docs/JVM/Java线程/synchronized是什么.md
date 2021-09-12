@@ -45,5 +45,20 @@ Synchronized 在描述代码块时可以指定自定义 Monitor ，默认为 thi
 Synchronized 的原子性保证了由其描述的方法或代码操作具有有序性，同一时间只能由最多只能有一个线程访问，不会触发 JMM 指令重排机制。
 ```
 
-# 5、参考
+# 5、总结
+当然我们上面的都是抄袭且算是知道这么一回事，有个monitor监控这块代码，然后monitor只能被一个线程持有什么的。
+
+那么具体的底层原理，我建议看 [参考2](http://www.hollischuang.com/archives/1883)，从源码角度解读 synchronized怎么做到的，不过我相信，面试问这些底层源码了，要么就是面试官炫技，要么就是面试官刁难，要么就是你简历写精通JVM。
+
+参考2的意思，简单来说就是从汇编代码可以看到：`monitorenter`和`monitorexit`两个指令，前者是加锁，后者是释放锁：
+```text
+每个对象维护着一个记录着被锁次数的计数器。未被锁定的对象的该计数器为0，当一个线程获得锁（执行monitorenter）后，该计数器自增变为 1 ，
+
+当同一个线程再次获得该对象的锁的时候，计数器再次自增。
+
+当同一个线程释放锁（执行monitorexit指令）的时候，计数器再自减。当计数器为0的时候。锁将被释放，其他线程便可以获得锁。
+```
+
+# 6、参考
 * [掘金: 图解Java线程安全](https://juejin.cn/post/6844903890224152584?share_token=5a50f615-9135-4e98-83a8-a062ff673f7b)
+* [hollischuang: 深入理解多线程（一）——Synchronized的实现原理](http://www.hollischuang.com/archives/1883)
