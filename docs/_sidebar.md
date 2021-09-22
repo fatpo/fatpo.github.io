@@ -53,6 +53,8 @@
       * [生产环境CPU飙升怎么办](JVM/调优/生产环境CPU飙升怎么办.md)
       * [生产环境内存飙升怎么办](JVM/调优/生产环境内存飙升怎么办.md)
       * [生产环境FullGC、YoungGC频率高怎么办](JVM/调优/生产环境FullGC、YoungGC频率高怎么办.md)
+  * Java8高效代码
+      * [科普BiFunction创建TriFunction](JVM/Java8高效代码/科普BiFunction创建TriFunction.md)
 * 并发编程
   * 线程
       * [Linux进程状态转移图](并发编程/线程/Linux进程状态转移图.md)
