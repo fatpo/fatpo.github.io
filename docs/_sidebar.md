@@ -58,6 +58,7 @@
       * [科普BinaryOperator](JVM/Java8高效代码/科普BinaryOperator.md)
       * [科普Supplier](JVM/Java8高效代码/科普Supplier.md)
       * [科普Consumer](JVM/Java8高效代码/科普Consumer.md)
+      * [科普Predicate](JVM/Java8高效代码/科普Predicate.md)
 * 并发编程
   * 线程
       * [Linux进程状态转移图](并发编程/线程/Linux进程状态转移图.md)
