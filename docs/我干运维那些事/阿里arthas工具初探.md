@@ -124,6 +124,6 @@ Affect(class-cnt:1 , method-cnt:1) cost in 60 ms.
         `---[0.076457ms] java.io.PrintStream:println() #28
 ```
 
-# 9、链接
+# 10、链接
 * arthas (传送门)[https://arthas.aliyun.com/doc/download.html]
 * 阿里动手实验室，(传送门)[https://start.aliyun.com/handson/qDlgqpBT/arthas-basics-cn]
