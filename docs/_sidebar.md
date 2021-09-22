@@ -56,6 +56,7 @@
   * Java8高效代码
       * [科普BiFunction创建TriFunction](JVM/Java8高效代码/科普BiFunction创建TriFunction.md)
       * [科普BinaryOperator](JVM/Java8高效代码/科普BinaryOperator.md)
+      * [科普Supplier](JVM/Java8高效代码/科普Supplier.md)
 * 并发编程
   * 线程
       * [Linux进程状态转移图](并发编程/线程/Linux进程状态转移图.md)

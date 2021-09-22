@@ -1,7 +1,7 @@
 # 1、科普 BinaryOperator
-这就是lambda表达式的那四件套：`Function`、`Supplier`、`Consumer`、`Predicate`。
+我们知道，四大函数式接口：`Function`、`Supplier`、`Consumer`、`Predicate`。
 
-当然今天看的是 `BinaryOperator`，就是一个封装好的，两个参数之间的lambda表达式。
+但今天不说它们，今天看的是 `BinaryOperator`，就是一个封装好的，两个参数之间的lambda表达式。
 
 使用demo：
 ```

@@ -1,4 +1,6 @@
 # 1、科普Function
+这就是lambda表达式的那四件套：`Function`、`Supplier`、`Consumer`、`Predicate`之一（四大函数式接口）。
+
 Function是一个入参，一个返回值：
 ```
     private static void compute1() {
