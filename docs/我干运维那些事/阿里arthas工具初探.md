@@ -69,7 +69,60 @@ watch demo.MathGame primeFactors params -x 2
 
 其中 `-x 2` 表示打印对象的深度，x越大，打印越详细。
 
-
+# 9、trace查看链路调用
+trace {fullPathClassName} {function}
+```
+[arthas@431] trace demo.MathGame run
+Press Q or Ctrl+C to abort.
+Affect(class-cnt:1 , method-cnt:1) cost in 28 ms.
+`---ts=2019-12-04 00:45:08;thread_name=main;id=1;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@3d4eac69
+    `---[0.617465ms] demo.MathGame:run()
+        `---[0.078946ms] demo.MathGame:primeFactors() #24 [throws Exception]
+ 
+`---ts=2019-12-04 00:45:09;thread_name=main;id=1;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@3d4eac69
+    `---[1.276874ms] demo.MathGame:run()
+        `---[0.03752ms] demo.MathGame:primeFactors() #24 [throws Exception]
+```
+还能用`'#cost > 10'`过滤耗时：
+```
+[arthas@431] trace demo.MathGame run '#cost > 10'
+Press Ctrl+C to abort.
+Affect(class-cnt:1 , method-cnt:1) cost in 41 ms.
+`---ts=2018-12-04 01:12:02;thread_name=main;id=1;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@3d4eac69
+    `---[12.033735ms] demo.MathGame:run()
+        +---[0.006783ms] java.util.Random:nextInt()
+        +---[11.852594ms] demo.MathGame:primeFactors()
+        `---[0.05447ms] demo.MathGame:print()
+```
+还能用`--skipJDKMethod false`看看JDK的调用（默认看不到）：
+```
+[arthas@431] trace --skipJDKMethod false demo.MathGame run
+Press Q or Ctrl+C to abort.
+Affect(class-cnt:1 , method-cnt:1) cost in 60 ms.
+`---ts=2019-12-04 00:44:41;thread_name=main;id=1;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@3d4eac69
+    `---[1.357742ms] demo.MathGame:run()
+        +---[0.028624ms] java.util.Random:nextInt() #23
+        +---[0.045534ms] demo.MathGame:primeFactors() #24 [throws Exception]
+        +---[0.005372ms] java.lang.StringBuilder:<init>() #28
+        +---[0.012257ms] java.lang.Integer:valueOf() #28
+        +---[0.234537ms] java.lang.String:format() #28
+        +---[min=0.004539ms,max=0.005778ms,total=0.010317ms,count=2] java.lang.StringBuilder:append() #28
+        +---[0.013777ms] java.lang.Exception:getMessage() #28
+        +---[0.004935ms] java.lang.StringBuilder:toString() #28
+        `---[0.06941ms] java.io.PrintStream:println() #28
+ 
+`---ts=2019-12-04 00:44:42;thread_name=main;id=1;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@3d4eac69
+    `---[3.030432ms] demo.MathGame:run()
+        +---[0.010473ms] java.util.Random:nextInt() #23
+        +---[0.023715ms] demo.MathGame:primeFactors() #24 [throws Exception]
+        +---[0.005198ms] java.lang.StringBuilder:<init>() #28
+        +---[0.006405ms] java.lang.Integer:valueOf() #28
+        +---[0.178583ms] java.lang.String:format() #28
+        +---[min=0.011636ms,max=0.838077ms,total=0.849713ms,count=2] java.lang.StringBuilder:append() #28
+        +---[0.008747ms] java.lang.Exception:getMessage() #28
+        +---[0.019768ms] java.lang.StringBuilder:toString() #28
+        `---[0.076457ms] java.io.PrintStream:println() #28
+```
 
 # 9、链接
 * arthas (传送门)[https://arthas.aliyun.com/doc/download.html]
