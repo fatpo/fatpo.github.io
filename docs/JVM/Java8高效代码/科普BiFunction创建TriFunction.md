@@ -16,6 +16,35 @@ BiFunction仅仅是比Function多一个入参：双入参，一个返回值。
     }
 ```
 
+它就是函数，感觉有点像是废话。
+
+函数也是一个对象，可以作为入参的，有python那味儿。
+
+给一个经典使用场景，可能看官您会更加明白我的废话：
+```
+public static void main(String[] args) {
+    compute4(1, 2, (a, b) -> a * b);
+    compute4(1, 2, (a, b) -> a / b);
+    compute4(1, 2, (a, b) -> a + b);
+    compute4(1, 2, (a, b) -> a - b);
+}
+
+private static void compute4(Integer t1, Integer t2, BiFunction<Integer, Integer, Integer> function) {
+    int res = function.apply(t1, t2);
+    System.out.println("compute4: " + res);
+}
+```
+结果：
+```
+compute4: 2
+compute4: 0
+compute4: 3
+compute4: -1
+```
+
+
+
+
 为了更好地研究怎么写一个TriFunction，我们看看BiFunction的代码：
 ```java
 package java.util.function;
@@ -109,7 +138,7 @@ public class Demo{
 200
 6000
 ```
-稍微润色下TriFunction，我们也学BiFunction加一个andThen():
+结果符合预期，稍微润色下TriFunction，我们也学BiFunction加一个andThen():
 ```
 import com.sun.istack.internal.NotNull;
 
