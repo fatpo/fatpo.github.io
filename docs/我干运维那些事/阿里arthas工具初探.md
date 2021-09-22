@@ -33,6 +33,7 @@ dashboard
 
 # 4、thread查看线程
 `thread 1` 可以看`ID=1`的线程：
+
 ![](.阿里arthas工具初探_images/82d9ebc9.png)
 
 # 5、sc查看JVM里已加载的类
@@ -40,6 +41,7 @@ dashboard
 ```dtd
 sc -d *MathGame
 ```
+
 ![](.阿里arthas工具初探_images/097b2c26.png)
 
 # 6、Jad反编译类
@@ -48,6 +50,7 @@ sc -d *MathGame
 ```dtd
 jad demo.MathGame
 ```
+
 ![](.阿里arthas工具初探_images/abe1bb5e.png)
 
 # 7、watch看函数返回值
@@ -56,7 +59,18 @@ jad demo.MathGame
 watch demo.MathGame primeFactors returnObj
 ```
 输入 `q` 或者 `Ctrl+C` 退出`watch`命令。
+
 ![](.阿里arthas工具初探_images/920aacb7.png)
 
-# 8、链接
+# 8、watch查看入参
+```dtd
+watch demo.MathGame primeFactors params -x 2
+```
+
+其中 `-x 2` 表示打印对象的深度，x越大，打印越详细。
+
+
+
+# 9、链接
+* arthas (传送门)[https://arthas.aliyun.com/doc/download.html]
 * 阿里动手实验室，(传送门)[https://start.aliyun.com/handson/qDlgqpBT/arthas-basics-cn]
