@@ -81,7 +81,7 @@ BiFunction<Integer, Integer, Integer> 可以等价 BinaryOperator<Integer>
 ```
 BiFunction<Integer, Integer, String> 不能替换成 BinaryOperator<String>
 ```
-那么`为什么有了BiFunction还要BinaryOperator`的答案就出来了：
+那么`为什么有了BiFunction还要BinaryOperator`的答案就出来了(在入参和返回值类型一致的情况下)：
 * BinaryOperator简洁，编码好看
 * 可读性更强
 * 开发者可以更为懒惰

@@ -56,6 +56,7 @@
   * Java8高效代码
       * [科普BiFunction创建TriFunction](JVM/Java8高效代码/科普BiFunction创建TriFunction.md)
       * [科普BinaryOperator](JVM/Java8高效代码/科普BinaryOperator.md)
+      * [科普UnaryOperator](JVM/Java8高效代码/科普UnaryOperator.md)
       * [科普Supplier](JVM/Java8高效代码/科普Supplier.md)
       * [科普Consumer](JVM/Java8高效代码/科普Consumer.md)
       * [科普Predicate](JVM/Java8高效代码/科普Predicate.md)
