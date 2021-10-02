@@ -1,5 +1,7 @@
 # 1、背景
-2021年10月01日04:07:49， 我的服务器被黑了，损失了800美金。
+2021年10月01日，凌晨四点多，我的服务器被黑了，损失了800美金。
+
+在这里感恩下我的宝宝，他的哭声让我惊醒，否则我可能要损失几千美金。
 
 # 2、django限流
 版本号：
@@ -27,32 +29,23 @@ class MyOtherView(View):
         pass
 ```
 
-这里要介绍下 `ip`，其实还能有：
+这里要介绍下 `ip`，其实还能有好几种配置方式：
 ```dtd
 Common keys
-The following string values for key= provide shortcuts to commonly used ratelimit keys:
-
-'ip' - Use the request IP address (i.e. request.META['REMOTE_ADDR'])
-
-Note
-
-If you are using a reverse proxy, make sure this value is correct or use an appropriate header: value. See the security notes.
-
-'get:X' - Use the value of request.GET.get('X', '').
-
-'post:X' - Use the value of request.POST.get('X', '').
-
-'header:x-x' - Use the value of request.META.get('HTTP_X_X', '').
+    The following string values for key= provide shortcuts to commonly used ratelimit keys:
+    'ip' - Use the request IP address (i.e. request.META['REMOTE_ADDR'])
 
 Note
-
-The value right of the colon will be translated to all-caps and any dashes will be replaced with underscores, e.g.: x-client-ip => X_CLIENT_IP.
-
-'user' - Use an appropriate value from request.user. Do not use with unauthenticated users.
-
-'user_or_ip' - Use an appropriate value from request.user if the user is authenticated, otherwise use request.META['REMOTE_ADDR'] (see the note above about reverse proxies).
+    If you are using a reverse proxy, make sure this value is correct or use an appropriate header: value. See the security notes.
+    'get:X' - Use the value of request.GET.get('X', '').
+    'post:X' - Use the value of request.POST.get('X', '').
+    'header:x-x' - Use the value of request.META.get('HTTP_X_X', '').
+Note
+    The value right of the colon will be translated to all-caps and any dashes will be replaced with underscores, e.g.: x-client-ip => X_CLIENT_IP.
+    'user' - Use an appropriate value from request.user. Do not use with unauthenticated users.
+    'user_or_ip' - Use an appropriate value from request.user if the user is authenticated, otherwise use request.META['REMOTE_ADDR'] (see the note above about reverse proxies).
 ```
-这里要介绍下`rate`，主要用法：
+这里还要介绍下`rate`，限流控制频率，主要用法：
 ```dtd
 rate –
 ‘5/m’ The number of requests per unit time allowed. Valid units are:
@@ -62,7 +55,7 @@ m - minutes
 h - hours
 d - days
 ```
-可以这么用：
+还可以这么用：
 ```dtd
 rate='1/m'
 rate='1/2m'
@@ -198,10 +191,13 @@ fi
 root@fatpo:/etc/nginx# crontab -l
 */1 * * * * /bin/bash /etc/nginx/nginx_log_monitor.sh
 ```
-效果：
+
+效果还不错：
+
 ![](.IP限流的最佳实践_images/3afbb3d2.png)
 
 
 # 5、参考
 *[官网: django-ratelimit](https://django-ratelimit.readthedocs.io/en/stable/keys.html#keys-chapter)
 *[CSDN: Django Nginx反代 获取真实ip](https://blog.csdn.net/weixin_43064185/article/details/104935777)
+*[张生荣: Nginx日志实现访问异常报警详解](https://www.zhangshengrong.com/p/Ap1Z32ra0M/)
