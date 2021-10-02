@@ -158,11 +158,12 @@ html = '<html><body><h2>一分钟内单ip请求次数超过阀值</h2>' + \
 msg.attach(MIMEText(html, 'html', 'utf-8'))
 
 # 发送
-server = smtplib.SMTP_SSL(smtp_server, smtp_port)
+server = smtplib.SMTP(smtp_server, smtp_port)
 server.login(from_addr, password)
 server.sendmail(from_addr, to_addr, msg.as_string())
 server.quit()
 ```
+
 
 ps：
 ```dtd
