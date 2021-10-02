@@ -162,7 +162,11 @@ server = smtplib.SMTP_SSL(smtp_server, smtp_port)
 server.login(from_addr, password)
 server.sendmail(from_addr, to_addr, msg.as_string())
 server.quit()
+```
 
+ps：
+```dtd
+这里的 邮箱password 不是邮箱的密码，是授权码哦。
 ```
 
 再写一个sh脚本，放到 `/etc/nginx/nginx_log_monitor.sh`: 
