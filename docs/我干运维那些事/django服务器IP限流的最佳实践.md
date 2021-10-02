@@ -147,13 +147,12 @@ msg['Subject'] = Header('Warning:单ip请求次数异常', 'utf-8').encode()
 # 获取系统中要发送的文本内容
 txt = ""
 with open('/var/log/nginx/log_ip_top10', 'r') as f:
-    line = f.readline().strip()
-    line = line.split(" ")
-    txt += str(line) + '\n'
+    lines = f.readlines()
+    txt += '\r\n; '.join(lines)
 
 # 邮件正文是MIMEText:
 html = '<html><body><h2>一分钟内单ip请求次数超过阀值</h2>' + \
-       '<p>ip:请求数\分，:%s</p>' % (txt) + \
+       '<p>ip:请求数\分\n: %s</p>' % (txt) + \
        '</body></html>'
 msg.attach(MIMEText(html, 'html', 'utf-8'))
 
