@@ -102,6 +102,7 @@
   * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
   * [帮荔枝搭建docker小程序后台](我干运维那些事/帮荔枝搭建docker小程序后台.md)
   * [阿里arthas工具初探](我干运维那些事/阿里arthas工具初探.md)  
+  * [django服务器IP限流的最佳实践](我干运维那些事/django服务器IP限流的最佳实践.md)  
 * 杂谈
   * [闭包和对象谁是穷人](闭包是穷人的对象，对象是穷人的闭包.md)
   * [5分钟用hexo和travis搭建github-pages](5分钟用hexo和travis搭建github-pages.md)
