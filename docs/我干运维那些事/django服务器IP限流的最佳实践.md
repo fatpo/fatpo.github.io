@@ -203,8 +203,8 @@ root@fatpo:/etc/nginx# crontab -l
 
 ![](.IP限流的最佳实践_images/3afbb3d2.png)
 
-
 # 5、参考
-*[官网: django-ratelimit](https://django-ratelimit.readthedocs.io/en/stable/keys.html#keys-chapter)
-*[CSDN: Django Nginx反代 获取真实ip](https://blog.csdn.net/weixin_43064185/article/details/104935777)
-*[张生荣: Nginx日志实现访问异常报警详解](https://www.zhangshengrong.com/p/Ap1Z32ra0M/)
+
+* [官网: django-ratelimit](https://django-ratelimit.readthedocs.io/en/stable/keys.html#keys-chapter)
+* [CSDN: Django Nginx反代 获取真实ip](https://blog.csdn.net/weixin_43064185/article/details/104935777)
+* [张生荣: Nginx日志实现访问异常报警详解](https://www.zhangshengrong.com/p/Ap1Z32ra0M/)
