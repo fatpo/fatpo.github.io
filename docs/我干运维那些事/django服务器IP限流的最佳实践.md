@@ -34,7 +34,6 @@ class MyOtherView(View):
 Common keys
     The following string values for key= provide shortcuts to commonly used ratelimit keys:
     'ip' - Use the request IP address (i.e. request.META['REMOTE_ADDR'])
-
 Note
     If you are using a reverse proxy, make sure this value is correct or use an appropriate header: value. See the security notes.
     'get:X' - Use the value of request.GET.get('X', '').
@@ -47,9 +46,7 @@ Note
 ```
 这里还要介绍下`rate`，限流控制频率，主要用法：
 ```dtd
-rate –
-‘5/m’ The number of requests per unit time allowed. Valid units are:
-
+rate – ‘5/m’ The number of requests per unit time allowed. Valid units are:
 s - seconds
 m - minutes
 h - hours
@@ -83,13 +80,13 @@ class MyAPI(MyView):
 
 这里为什么我的配置不用`ip`而用`header:X_REAL_IP`，因为生产环境都是配置了nginx等东东的。`ip`拿到的都是代理IP，比如`127.0.0.1`，而我们要的是真实IP。
 
-所以我们需要先在nginx的配置中加一个：
+所以我们需要先在nginx的配置中加以下配置，这样子django的`ratelimit`才能识别到`header:X_REAL_IP`。
 ```dtd
 location / {
     proxy_set_header   X-Real-IP        $remote_addr;
 }
 ```
-这样子django的`ratelimit`才能识别到`header:X_REAL_IP`。
+
 
 # 3、nginx限流
 nginx版本：
@@ -122,44 +119,50 @@ nginx -s reload
 先写一个发送邮件的python脚本，放到 `/etc/nginx/send_mail.py` ：
 ```dtd
 # -*- coding: utf-8 -*-
-from email import encoders
+import smtplib
 from email.header import Header
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from datetime import datetime
-import os
-import smtplib
+
+
 def _format_addr(s):
- name, addr = parseaddr(s)
- return formataddr((Header(name, 'utf-8').encode(), addr))
+    name, addr = parseaddr(s)
+    return formataddr((Header(name, 'utf-8').encode(), addr))
+
+
 # 邮箱定义
 smtp_server = 'smtp.qq.com'
 smtp_port = 25
 from_addr = 'FROM_EMAIL@qq.com'
 password = 'FROM_EMAIL_KEY'
 to_addr = ['TO_EMAIL@qq.com']
+
 # 邮件对象
 msg = MIMEMultipart()
 msg['From'] = _format_addr('发件人 <%s>' % from_addr)
 msg['To'] = _format_addr('收件人 <%s>' % to_addr)
 msg['Subject'] = Header('Warning:单ip请求次数异常', 'utf-8').encode()
+
 # 获取系统中要发送的文本内容
 txt = ""
 with open('/var/log/nginx/log_ip_top10', 'r') as f:
- line = f.readline().strip()
- line = line.split(" ")
- txt += str(line)+'\n'
+    line = f.readline().strip()
+    line = line.split(" ")
+    txt += str(line) + '\n'
+
 # 邮件正文是MIMEText:
 html = '<html><body><h2>一分钟内单ip请求次数超过阀值</h2>' + \
- '<p>ip:请求数\分，:%s</p>' % (txt) + \
- '</body></html>'
+       '<p>ip:请求数\分，:%s</p>' % (txt) + \
+       '</body></html>'
 msg.attach(MIMEText(html, 'html', 'utf-8'))
+
+# 发送
 server = smtplib.SMTP_SSL(smtp_server, smtp_port)
 server.login(from_addr, password)
 server.sendmail(from_addr, to_addr, msg.as_string())
 server.quit()
+
 ```
 
 再写一个sh脚本，放到 `/etc/nginx/nginx_log_monitor.sh`: 
