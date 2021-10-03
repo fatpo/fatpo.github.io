@@ -5,6 +5,9 @@
 
 更多细节可以看国哥另外一篇，[传送门](https://fatpo.github.io/#/我干运维那些事/django服务器IP限流的最佳实践)
 
+我可能被人盯上了，有人开扫描器：
+![](.nginx服务器IP黑名单的最佳实践_images/f0602817.png)
+
 # 2、nginx黑名单
 版本号：
 ```
@@ -36,6 +39,26 @@ http {
 nginx -t
 nginx -s reload
 ```
-# 3、参考
+
+# 3、自动黑名单
+写个脚本`/etc/nginx/auto_black_ip.sh`：
+```dtd
+#!/bin/bash
+tail -n10000 /var/log/nginx/access.log |awk '{print $1,$7,$9}' | grep -i -v -E "google|yahoo|baidu|msnbot|FeedSky|sogou|360|bing|soso|403|api" | awk '{print  $1}' | sort | uniq -c | sort -rn \
+|awk '{if($1>=100)print "deny "$2";"}' >> /etc/nginx/ip.black ; sort -u /etc/nginx/ip.black  -o /etc/nginx/ip.black ; /usr/sbin/nginx  -s reload
+```
+给它加执行权限：
+```dtd
+chmod +x /etc/nginx/auto_black_ip.sh
+```
+
+写一个`crontab -e`，一分钟执行一次：
+```dtd
+*/1 * * * * /bin/bash /etc/nginx/auto_black_ip.sh > /etc/nginx/alert.log 2>&1
+```
+
+效果不错，反正是叠加后去重，国哥不在电脑前，也能自动抓黑名单了。
+
+# 4、参考
 
 * [CSDN: Nginx基础配置之设置IP黑名单](https://blog.csdn.net/snow____man/article/details/83545922)
