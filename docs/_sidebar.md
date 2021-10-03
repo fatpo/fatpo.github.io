@@ -95,16 +95,18 @@
   * SpringCloudAlibaba
     * [SpringBoot自动装配核心源码剖析](微服务专题/SpringCloudAlibaba/SpringBoot自动装配核心源码剖析.md)
 * 我干运维那些事儿
-  * [ubuntu18.04开启supervisor开机自启动](我干运维那些事/ubuntu18.04开启supervisor开机自启动.md)
-  * [django发送错误日志邮件](我干运维那些事/django发送错误日志邮件.md)
-  * [macos怎么查看当前端口列表](我干运维那些事/macos怎么查看当前端口列表.md)
-  * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)
-  * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
-  * [帮荔枝搭建docker小程序后台](我干运维那些事/帮荔枝搭建docker小程序后台.md)
-  * [阿里arthas工具初探](我干运维那些事/阿里arthas工具初探.md)  
-  * [django服务器IP限流的最佳实践](我干运维那些事/django服务器IP限流的最佳实践.md)  
-  * [nginx服务器IP黑名单的最佳实践](我干运维那些事/nginx服务器IP黑名单的最佳实践.md)  
-  * [django配置解耦最佳实践](我干运维那些事/django配置解耦最佳实践.md)  
+  * 生产实战
+      * [ubuntu18.04开启supervisor开机自启动](我干运维那些事/生产实战/ubuntu18.04开启supervisor开机自启动.md)
+      * [django发送错误日志邮件](我干运维那些事/生产实战/django发送错误日志邮件.md)
+      * [macos怎么查看当前端口列表](我干运维那些事/生产实战/macos怎么查看当前端口列表.md)
+      * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/生产实战/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)
+      * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/生产实战/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
+      * [帮荔枝搭建docker小程序后台](我干运维那些事/生产实战/帮荔枝搭建docker小程序后台.md)
+      * [阿里arthas工具初探](我干运维那些事/生产实战/阿里arthas工具初探.md)  
+      * [django服务器IP限流的最佳实践](我干运维那些事/生产实战/django服务器IP限流的最佳实践.md)  
+      * [nginx服务器IP黑名单的最佳实践](我干运维那些事/生产实战/nginx服务器IP黑名单的最佳实践.md)  
+      * [django配置解耦最佳实践](我干运维那些事/生产实战/django配置解耦最佳实践.md)  
+      * [django配置保密最佳实践](我干运维那些事/生产实战/django配置保密最佳实践.md)  
 * 杂谈
   * [闭包和对象谁是穷人](闭包是穷人的对象，对象是穷人的闭包.md)
   * [5分钟用hexo和travis搭建github-pages](5分钟用hexo和travis搭建github-pages.md)
