@@ -3,7 +3,7 @@
 
 里面放的可都是明文密码啊！ 如果不小心开了`DEBUG=True` + 刚好发了个`50X错误`，底裤都给人看光了。
 
-# 2、django-environ 帮你解耦
+# 2、django-environ 帮你加密
 版本号：
 ```dtd
 #  pip3 freeze | grep environ             
