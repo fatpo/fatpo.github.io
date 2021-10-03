@@ -62,3 +62,4 @@ chmod +x /etc/nginx/auto_black_ip.sh
 # 4、参考
 
 * [CSDN: Nginx基础配置之设置IP黑名单](https://blog.csdn.net/snow____man/article/details/83545922)
+* [StackOverflow: Unique sorting: Redirect output to the same file](https://askubuntu.com/questions/528658/unique-sorting-redirect-output-to-the-same-file)
