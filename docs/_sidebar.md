@@ -108,6 +108,7 @@
       * [nginx服务器IP黑名单的最佳实践](我干运维那些事/生产实战/nginx服务器IP黑名单的最佳实践.md)  
       * [django配置解耦最佳实践](我干运维那些事/生产实战/django配置解耦最佳实践.md)  
       * [django配置保密最佳实践](我干运维那些事/生产实战/django配置保密最佳实践.md)  
+      * [logrotate切割时间不大对劲啊](我干运维那些事/生产实战/logrotate切割时间不大对劲啊.md)  
 * 杂谈
   * [闭包和对象谁是穷人](闭包是穷人的对象，对象是穷人的闭包.md)
   * [5分钟用hexo和travis搭建github-pages](5分钟用hexo和travis搭建github-pages.md)
