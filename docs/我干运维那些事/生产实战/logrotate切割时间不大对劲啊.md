@@ -76,24 +76,38 @@ logrotate 默认是6点25的crontab。。好吧，明白了。
 ```
 
 
-
 # 3、解决
-```dtd
-https://askubuntu.com/questions/24503/specify-the-time-of-daily-log-rotate
+增加一个crontab:
 ```
-具体：
-Edit in /etc/crontab the line that says: 
-```dtd
-25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+59 23 * * * logrotate -vf /etc/logrotate.d/nginx
 ```
-so that the 25 6 reads 0 0. This will make it so that all scripts in /etc/cron.daily runs at midnight.
-
-If you only want to make logrotate run at midnight, move /etc/cron.daily/logrotate to some other directory, and add the line
+`cat /etc/logrotate.d/nginx`:
 ```dtd
-0 0    * * *   root    /new/path/to/logrotate/script
+root@fatpo:/var/log/nginx# cat /etc/logrotate.d/nginx
+/var/log/nginx/*.log {
+	daily
+	missingok
+	rotate 60
+	dateext
+        dateformat .%Y%m%d
+        #compress
+	#delaycompress
+	notifempty
+	create 0640 www-data adm
+	sharedscripts
+	prerotate
+		if [ -d /etc/logrotate.d/httpd-prerotate ]; then \
+			run-parts /etc/logrotate.d/httpd-prerotate; \
+		fi \
+	endscript
+	postrotate
+		nginx -s reload # invoke-rc.d nginx rotate >/dev/null 2>&1
+	endscript
+}
 ```
-at the end of /etc/crontab.
+注意这里的`postrotate`，如果不重启nginx，那么日志并不是重新输入到access.log，因为句柄没改变。
 
 # 3、参考
+* [linux环境下使用logrotate工具实现nginx日志切割](https://zhuanlan.zhihu.com/p/24880144)
 * [linux下日志定时轮询的流程详解](https://cloud.tencent.com/developer/article/1720635)
 * [Specify the time of daily log rotate](https://askubuntu.com/questions/24503/specify-the-time-of-daily-log-rotate)
