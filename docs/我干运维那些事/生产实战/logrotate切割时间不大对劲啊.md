@@ -22,7 +22,7 @@ drwxr-xr-x 103 root root 4096 Oct 11 06:13 ../
 -rw-r--r--   1 root root  178 Aug 15  2017 ufw
 -rw-r--r--   1 root root  235 Nov 25  2019 unattended-upgrades
 ```
-我们看看 `cat /etc/logrotate.d/nginx`: 
+我们看看这个默认的配置`cat /etc/logrotate.d/nginx`: 
 ```dtd
 /var/log/nginx/*.log {
 	daily
@@ -79,12 +79,12 @@ logrotate 默认是6点25的crontab。。好吧，明白了。
 # 3、解决
 增加一个crontab:
 ```
-59 23 * * * logrotate -vf /etc/logrotate.d/nginx
+59 23 * * * /usr/sbin/logrotate -f /etc/logrotate.d/nginx  >> /var/log/nginx/logrotate.log 2>&1
 ```
-`cat /etc/logrotate.d/nginx`:
-```dtd
-root@fatpo:/var/log/nginx# cat /etc/logrotate.d/nginx
-/var/log/nginx/*.log {
+然后稍微修改下配置，只切割`access.log`和`error.log`：
+```
+root@fatpo:~# cat /etc/logrotate.d/nginx
+/var/log/nginx/access.log {
 	daily
 	missingok
 	rotate 60
@@ -101,12 +101,37 @@ root@fatpo:/var/log/nginx# cat /etc/logrotate.d/nginx
 		fi \
 	endscript
 	postrotate
-		nginx -s reload # invoke-rc.d nginx rotate >/dev/null 2>&1
+		/usr/sbin/nginx -s reload # invoke-rc.d nginx rotate >/dev/null 2>&1
 	endscript
+}
+
+/var/log/nginx/error.log {
+        daily
+        missingok
+        rotate 60
+        dateext
+        dateformat .%Y%m%d
+        #compress
+        #delaycompress
+        notifempty
+        create 0640 www-data adm
+        sharedscripts
+        prerotate
+                if [ -d /etc/logrotate.d/httpd-prerotate ]; then \
+                        run-parts /etc/logrotate.d/httpd-prerotate; \
+                fi \
+        endscript
+        postrotate
+                /usr/sbin/nginx -s reload # invoke-rc.d nginx rotate >/dev/null 2>&1
+        endscript
 }
 ```
 注意这里的`postrotate`，如果不重启nginx，那么日志并不是重新输入到access.log，因为句柄没改变。
 
+ps：
+```
+nginx 必须写完全的路径，否则会识别不到。
+```
 # 3、参考
 * [linux环境下使用logrotate工具实现nginx日志切割](https://zhuanlan.zhihu.com/p/24880144)
 * [linux下日志定时轮询的流程详解](https://cloud.tencent.com/developer/article/1720635)

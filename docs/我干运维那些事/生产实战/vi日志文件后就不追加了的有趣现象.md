@@ -62,5 +62,10 @@ If you accidentally write to a log file you may lose any new log file entries ma
 
 不要太在意细节，写这篇只是想和大家分享一个有趣的vim现象，仅此而已。
 
+补充下，有朋友问我怎么解决呢？ 重启即可，自动重新定向fd：
+```
+nginx -s reload
+```
+
 # 4、参考
 * [Is using vi to view log files in PROD servers not recommended?](https://askubuntu.com/questions/321751/is-using-vi-to-view-log-files-in-prod-servers-not-recommended)
