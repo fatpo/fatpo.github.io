@@ -103,6 +103,7 @@
       * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/生产实战/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)
       * [ubuntu18.04安装mysql5.7.35并且开启双机备份](我干运维那些事/生产实战/ubuntu18.04安装mysql5.7.35并且开启双机备份.md)
       * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/生产实战/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
+      * [ubuntu18.04取消ssh密码登录](我干运维那些事/生产实战/ubuntu18.04取消ssh密码登录.md)
       * [帮荔枝搭建docker小程序后台](我干运维那些事/生产实战/帮荔枝搭建docker小程序后台.md)
       * [阿里arthas工具初探](我干运维那些事/生产实战/阿里arthas工具初探.md)  
       * [django服务器IP限流的最佳实践](我干运维那些事/生产实战/django服务器IP限流的最佳实践.md)  
