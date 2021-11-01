@@ -53,10 +53,11 @@ apt-cache madison is not emphasized because most of what it displays is also ava
 ```text
 $ mysql -u root
 
-> FLUSH PRIVILEGES;
-> USE mysql; 
-> ALTER USER 'root'@'localhost' IDENTIFIED BY 'N3w_p@ssw0rD.';
-> quit
+mysql> USE mysql; 
+mysql> update user set authentication_string=PASSWORD('your_password_here') where user='root';
+mysql> update user set plugin="mysql_native_password" where User='root';
+mysql> flush privileges;
+mysql> quit
 ```
 
 # 4、数据库备份
@@ -84,7 +85,7 @@ ls  $(pwd)/dblocal.sql.gz* |sort -nr | awk 'NR>30' | xargs rm -f
 然后`crontab`:
 ```text
 # m h  dom mon dow   command
-0 9 * * * /bin/bash /home/ubuntu/shells/bakdb.sh >> /home/ubuntu/shells/bakdb.log 2>&1
+0 11 * * * /bin/bash /home/ubuntu/shells/bakdb.sh >> /home/ubuntu/shells/bakdb.log 2>&1
 ```
 这里主要感谢StackOverflow的大神，提供的远程备份：
 ```text
