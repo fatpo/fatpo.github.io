@@ -103,3 +103,4 @@ ssh root@140.1.2.3 "mysqldump --add-drop-table -uroot -p123456  myappdb | gzip -
 * [Why apt madison?](https://unix.stackexchange.com/questions/276037/why-apt-madison)
 * [mysql_用命令行备份数据库](https://www.cnblogs.com/hellangels333/p/9059770.html)
 * [mysqldump-via-ssh-to-local-computer](https://stackoverflow.com/questions/40024280/mysqldump-via-ssh-to-local-computer)
+* [怎么设置mysql的root密码](https://devanswers.co/how-to-reset-mysql-root-password-ubuntu/#4-test-new-root-password)
