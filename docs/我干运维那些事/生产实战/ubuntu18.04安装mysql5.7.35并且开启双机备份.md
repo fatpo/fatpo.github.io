@@ -72,6 +72,10 @@ CREATE DATABASE IF NOT EXISTS myappdb DEFAULT CHARACTER SET utf8mb4 DEFAULT COLL
 ```text
 ➜  shells cat bakdb.sh 
 #!/bin/bash 
+
+# 當命令返回一個非零退出狀態（失敗）時退出。讀取初始化檔案時不設定
+set -o errexit
+
 time=$(date "+%Y-%m-%d %H:%M:%S")
 echo 'back db at ' "${time}"
 
