@@ -101,6 +101,7 @@
       * [django发送错误日志邮件](我干运维那些事/生产实战/django发送错误日志邮件.md)
       * [macos怎么查看当前端口列表](我干运维那些事/生产实战/macos怎么查看当前端口列表.md)
       * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/生产实战/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)
+      * [ubuntu18.04安装mysql5.7.35并且开启双机备份](我干运维那些事/生产实战/ubuntu18.04安装mysql5.7.35并且开启双机备份.md)
       * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/生产实战/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
       * [帮荔枝搭建docker小程序后台](我干运维那些事/生产实战/帮荔枝搭建docker小程序后台.md)
       * [阿里arthas工具初探](我干运维那些事/生产实战/阿里arthas工具初探.md)  

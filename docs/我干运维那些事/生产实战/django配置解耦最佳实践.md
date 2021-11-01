@@ -73,7 +73,7 @@ LOGGING = {
         },  # 用于文件输出
         'mail_admins_handler': {
             'level': 'ERROR',
-            'class': 'SecPhone.mail.MyEmailHandler',
+            'class': 'MyApp.mail.MyEmailHandler',
             'formatter': 'standard',
             'include_html': True,
         },
