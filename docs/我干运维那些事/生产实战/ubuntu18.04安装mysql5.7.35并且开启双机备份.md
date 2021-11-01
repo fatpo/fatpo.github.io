@@ -63,6 +63,12 @@ mysql> quit
 # 4、数据库备份
 
 主机A在跑应用，我打算在主机B每天定时备份下主机A的数据。
+
+首先在主机B创建一个相同名字的数据库：
+```text
+CREATE DATABASE IF NOT EXISTS myappdb DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
+```
+然后写shell脚本：
 ```text
 ➜  shells cat bakdb.sh 
 #!/bin/bash 
