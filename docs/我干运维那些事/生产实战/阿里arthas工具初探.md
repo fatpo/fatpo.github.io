@@ -124,6 +124,23 @@ Affect(class-cnt:1 , method-cnt:1) cost in 60 ms.
         `---[0.076457ms] java.io.PrintStream:println() #28
 ```
 
-# 10、链接
+# 10、怎么在watch中过滤
+比如我的函数，它在class `com.fatpo.api.RecallFilter` 中：
+```
+public List<RecallItem> func(List<RecallItem> items, RecomReq req){
+    // ...
+}
+```
+现在想过滤items1中的itemId="abc123"的item，打印出来：
+```
+watch com.fatpo.api.RecallFilter func "{params[0].{? #this.itemId.contains('abc123')}.{itemId} }" -n 1 -x 2
+```
+其中两个参数 ：
+```
+-n 1 表示只抓一次
+-x 2 打印深度为2
+```
+
+# 11、链接
 * arthas (传送门)[https://arthas.aliyun.com/doc/download.html]
 * 阿里动手实验室，(传送门)[https://start.aliyun.com/handson/qDlgqpBT/arthas-basics-cn]
