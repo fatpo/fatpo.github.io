@@ -42,8 +42,8 @@ include(
 ```
 在 `settings_database.py`这么用：
 ```dtd
-from SecPhone.settings import LOCAL_DEV
-from SecPhone.settings import env
+from MyApp.settings import LOCAL_DEV
+from MyApp.settings import env
 
 DATABASES = {
     'default': {
