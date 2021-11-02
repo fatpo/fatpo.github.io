@@ -144,3 +144,4 @@ watch com.fatpo.api.RecallFilter func "{params[0].{? #this.itemId.contains('abc1
 # 11、链接
 * arthas (传送门)[https://arthas.aliyun.com/doc/download.html]
 * 阿里动手实验室，(传送门)[https://start.aliyun.com/handson/qDlgqpBT/arthas-basics-cn]
+* arthas搜索issue[https://github.com/alibaba/arthas/issues/11]
