@@ -54,7 +54,7 @@ drwxr-xr-x 103 root root 4096 Oct 11 06:13 ../
 
 定位到问题了：
 ```dtd
-root@vsim:/var/log/nginx# cat /etc/crontab
+root@fatpo:/var/log/nginx# cat /etc/crontab
 # /etc/crontab: system-wide crontab
 # Unlike any other crontab you don't have to run the `crontab'
 # command to install the new version when you edit this file
@@ -132,7 +132,88 @@ ps：
 ```
 nginx 必须写完全的路径，否则会识别不到。
 ```
-# 3、参考
+
+# 3、django的日志也不对
+时间：`2021年11月11日21:00:01`，django的日志切割一直使用内部的：
+```
+logging.handlers.TimedRotatingFileHandler
+```
+但是自从我搞了nginx的logrotate后，django的日志就一直不准了，总是前后两天的混在一起。
+
+难受啊，感觉这nginx和django怎么会搞上呢？没理由啊。
+
+后来想清楚了，是不是我把gunicorn的django worker数量从1提升到3导致的？
+
+查了下google，还真的是有这个可能！
+
+搜了下发现好像没有什么解决方案，最好是不要用django自带的切割，用logrotate，好吧，先把django的日志配置改为：
+改动前：
+```
+ 'file_handler': {
+    'level': 'INFO',
+    'class': 'logging.handlers.TimedRotatingFileHandler',
+    'filename': '%s/django.log' % LOG_DIR,
+    'formatter': 'standard',
+    'encoding': 'utf-8',
+    'when': 'midnight',
+    'interval': 1,
+    'backupCount': 30,
+}, 
+```
+改动后：
+```
+    'file_handler': {
+        'level': 'INFO',
+        'class': 'logging.handlers.WatchedFileHandler',
+        'filename': '%s/django.log' % LOG_DIR,
+        'formatter': 'standard',
+        'encoding': 'utf-8'
+    },  
+```
+然后再新建一个 `/etc/logrotate.d/myapp`:
+```
+root@fatpo:~/www/myapp/logs# cat /etc/logrotate.d/myapp
+/root/www/myapp/logs/django.log {
+  daily
+  rotate 30
+  create
+  dateext
+  dateyesterday
+  compress
+  delaycompress
+  notifempty
+  missingok
+  sharedscripts
+  postrotate
+     kill -USR1 $(cat /root/www/myapp/logs/gunicorn.pid)
+  endscript
+}
+```
+这里有点难点，我找不到 `gunicorn.pid`，所以我去supervisor的gunicorn启动参数制定了pid: 
+```
+--pid /root/www/myapp/logs/gunicorn.pid
+```
+整个supervisor文件如下：
+```
+cat /etc/supervisor/myapp.ini
+[program:myapp]
+user=root
+environment= PATH="/usr/bin"
+directory=/root/www/myapp/
+#command=/usr/bin/python3 manage.py runserver
+command=/usr/local/bin/gunicorn --reload -k gevent -w 3 -b 0.0.0.0:8000 --pid /root/www/myapp/logs/gunicorn.pid --error-logfile /root/www/myapp/logs/gunicorn.err --log-file /root/www/myapp/logs/gunicorn.log  --access-logfile  /root/www/myapp/logs/gunicorn_access.log  myapp.wsgi:application
+#redirect_stderr=false
+stdout_logfile=/root/www/myapp/logs/myapp-supervisor.log
+stderr_logfile=/root/www/myapp/logs/myapp-supervisor.err
+```
+
+记得要配置crontab:
+```
+0 0 * * * /usr/sbin/logrotate -f /etc/logrotate.d/myapp  >> /root/www/myapp/logs/logrotate_vsim.log 2>&1
+```
+因为我在logrotate配置了`dateyesterday` ，所以我的crontab可以是当天`0 0`搞，否则就要设置`59 23`，这样子不雅观，还会丢失一分钟的日志。
+
+# 4、参考
 * [linux环境下使用logrotate工具实现nginx日志切割](https://zhuanlan.zhihu.com/p/24880144)
 * [linux下日志定时轮询的流程详解](https://cloud.tencent.com/developer/article/1720635)
 * [Specify the time of daily log rotate](https://askubuntu.com/questions/24503/specify-the-time-of-daily-log-rotate)

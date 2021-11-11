@@ -179,7 +179,7 @@ if __name__ == '__main__':
 
 计算结果：
 ```
-/usr/local/bin/python3.8 /Users/ouyang/PycharmProjects/VirtualSIM_BackEnd/test.py
+/usr/local/bin/python3.8 /Users/ouyang/PycharmProjects/myapp/test.py
 before prehanding data for adjusted cosine:
 [[5, 3, 4, 4, None],
  [3, 1, 2, 3, 3],
