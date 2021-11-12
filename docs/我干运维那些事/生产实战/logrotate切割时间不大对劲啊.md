@@ -133,7 +133,7 @@ ps：
 nginx 必须写完全的路径，否则会识别不到。
 ```
 
-# 3、django的日志也不对
+#4、django的日志也不对
 时间：`2021年11月11日21:00:01`，django的日志切割一直使用内部的：
 ```
 logging.handlers.TimedRotatingFileHandler
@@ -142,7 +142,9 @@ logging.handlers.TimedRotatingFileHandler
 
 难受啊，感觉这nginx和django怎么会搞上呢？没理由啊。
 
-后来想清楚了，是不是我把gunicorn的django worker数量从1提升到3导致的？
+后来想清楚了，那段时间，我不仅改了nginx配置，我还改了gunicorn的配置。
+
+是不是我把gunicorn的django worker数量从1提升到3导致的？
 
 查了下google，还真的是有这个可能！
 
@@ -213,7 +215,7 @@ stderr_logfile=/root/www/myapp/logs/myapp-supervisor.err
 ```
 因为我在logrotate配置了`dateyesterday` ，所以我的crontab可以是当天`0 0`搞，否则就要设置`59 23`，这样子不雅观，还会丢失一分钟的日志。
 
-# 4、参考
+# 5、参考
 * [linux环境下使用logrotate工具实现nginx日志切割](https://zhuanlan.zhihu.com/p/24880144)
 * [linux下日志定时轮询的流程详解](https://cloud.tencent.com/developer/article/1720635)
 * [Specify the time of daily log rotate](https://askubuntu.com/questions/24503/specify-the-time-of-daily-log-rotate)
