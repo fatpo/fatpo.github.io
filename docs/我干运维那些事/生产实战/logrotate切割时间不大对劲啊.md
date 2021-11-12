@@ -133,7 +133,7 @@ ps：
 nginx 必须写完全的路径，否则会识别不到。
 ```
 
-#4、django的日志也不对
+# 4、django的日志也不对
 时间：`2021年11月11日21:00:01`，django的日志切割一直使用内部的：
 ```
 logging.handlers.TimedRotatingFileHandler
