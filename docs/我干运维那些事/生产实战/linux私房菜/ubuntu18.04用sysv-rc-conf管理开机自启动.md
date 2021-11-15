@@ -17,7 +17,7 @@ sudo apt-get install sysv-rc-conf
 sudo sysv-rc-conf
 ```
 
-![](imgs/2021-08-31-tYlPR9.png)
+![](../imgs/2021-08-31-tYlPR9.png)
 
 # 2、查看是否开机启动
 ```
@@ -70,7 +70,7 @@ rc0.d/ rc1.d/ rc2.d/ rc3.d/ rc4.d/ rc5.d/ rc6.d/ rcS.d/
 ```
 
 开机启动顺序：
-![](imgs/2021-08-31-ubuntu18.0开启启动流程图-V20210830.jpg)
+![](../imgs/2021-08-31-ubuntu18.0开启启动流程图-V20210830.jpg)
 
 
 至此，现在对于Debian/Ubuntu Linux的启动过程大家应该有所了解，总结一下：

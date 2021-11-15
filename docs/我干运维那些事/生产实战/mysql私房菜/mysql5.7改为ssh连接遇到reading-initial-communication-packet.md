@@ -39,7 +39,7 @@ mysql - 3306 - closed
 
 # 2、mac连接mysql软件SequelPro连接成功
 现在想用ssh来连接mysql，用macos的 SequelPro 能连接成功，配置截图：
-![](imgs/2021-08-31-1vztoE.png)
+![](../imgs/2021-08-31-1vztoE.png)
 
 
 # 3、windows连接mysql软件navicat连接失败
@@ -79,7 +79,7 @@ SSH -L 6666:10.0.0.57:23 -Nf 10.0.0.56
 # -f  不登录到主机，一般-Nf搭配使用即后台运行且不登录
 ```
 
-![](imgs/2021-08-31-UB1pR3.png)
+![](../imgs/2021-08-31-UB1pR3.png)
 
 
 ## 4.2、本地隧道还原navicat错误现场
@@ -115,7 +115,7 @@ SSH -L 6666:10.0.0.57:23 -Nf 10.0.0.56
     * 我们配置了mysql的password（对）
 
 成功：
-![](imgs/2021-08-31-0nQ6zF.png)
+![](../imgs/2021-08-31-0nQ6zF.png)
 
 
 # 5、ssh参数

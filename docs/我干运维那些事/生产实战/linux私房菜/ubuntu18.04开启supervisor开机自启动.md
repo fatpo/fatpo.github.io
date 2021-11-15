@@ -27,13 +27,13 @@ supervisord        0:off    1:off    2:on    3:on    4:on    5:on    6:off
 索性就继续研究下这个软件：`sysv-rc-conf`，是不是哪里没弄对。
 
 看到help有一个说明： +/= 表示启动一下，好家伙，试了下，发现异常。
-![](imgs/2021-09-04-SMJYcD.png)
+![](../imgs/2021-09-04-SMJYcD.png)
 
 redis服务是成功的：
-![](imgs/2021-09-04-2.png)
+![](../imgs/2021-09-04-2.png)
 
 supervisord服务是失败的，而且有明显的错误提示：`找不到/etc/init.d/supervisord`：
-![](imgs/2021-09-04-1.png)
+![](../imgs/2021-09-04-1.png)
 
 所以这个`sysv-rc-conf`就是帮忙管理一下`/etc/init.d/`文件夹下的启动服务脚本。。。仅此而已。
 

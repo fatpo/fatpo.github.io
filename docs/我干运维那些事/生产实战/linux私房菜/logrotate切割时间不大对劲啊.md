@@ -211,7 +211,7 @@ stderr_logfile=/root/www/myapp/logs/myapp-supervisor.err
 
 记得要配置crontab:
 ```
-0 0 * * * /usr/sbin/logrotate -f /etc/logrotate.d/myapp  >> /root/www/myapp/logs/logrotate_vsim.log 2>&1
+0 0 * * * /usr/sbin/logrotate -f /etc/logrotate.d/myapp  >> /root/www/myapp/logs/logrotate_myapp.log 2>&1
 ```
 因为我在logrotate配置了`dateyesterday` ，所以我的crontab可以是当天`0 0`搞，否则就要设置`59 23`，这样子不雅观，还会丢失一分钟的日志。
 

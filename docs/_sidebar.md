@@ -97,22 +97,28 @@
     * [SpringBoot自动装配核心源码剖析](微服务专题/SpringCloudAlibaba/SpringBoot自动装配核心源码剖析.md)
 * 我干运维那些事儿
   * 生产实战
-      * [ubuntu18.04开启supervisor开机自启动](我干运维那些事/生产实战/ubuntu18.04开启supervisor开机自启动.md)
-      * [django发送错误日志邮件](我干运维那些事/生产实战/django发送错误日志邮件.md)
-      * [macos怎么查看当前端口列表](我干运维那些事/生产实战/macos怎么查看当前端口列表.md)
-      * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/生产实战/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)
-      * [ubuntu18.04安装mysql5.7.35并且开启双机备份](我干运维那些事/生产实战/ubuntu18.04安装mysql5.7.35并且开启双机备份.md)
-      * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/生产实战/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
-      * [ubuntu18.04取消ssh密码登录](我干运维那些事/生产实战/ubuntu18.04取消ssh密码登录.md)
-      * [帮荔枝搭建docker小程序后台](我干运维那些事/生产实战/帮荔枝搭建docker小程序后台.md)
+      * linux私房菜
+        * [macos怎么查看当前端口列表](我干运维那些事/生产实战/linux私房菜/macos怎么查看当前端口列表.md)      
+        * [man最佳实践](我干运维那些事/生产实战/linux私房菜/man的最佳实践.md)      
+        * [kill最佳实践](我干运维那些事/生产实战/linux私房菜/kill的最佳实践.md)   
+        * [ubuntu18.04取消ssh密码登录](我干运维那些事/生产实战/linux私房菜/ubuntu18.04取消ssh密码登录.md)
+        * [nginx服务器IP黑名单的最佳实践](我干运维那些事/生产实战/linux私房菜/nginx服务器IP黑名单的最佳实践.md)  
+        * [ubuntu18.04开启supervisor开机自启动](我干运维那些事/生产实战/linux私房菜/ubuntu18.04开启supervisor开机自启动.md)
+        * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/生产实战/linux私房菜/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
+        * [怎么快速定位磁盘空间不足的问题](我干运维那些事/生产实战/linux私房菜/怎么快速定位磁盘空间不足的问题.md)  
+        * [vi日志文件后就不追加了的有趣现象](我干运维那些事/生产实战/linux私房菜/vi日志文件后就不追加了的有趣现象.md)  
+        * [logrotate切割时间不大对劲啊](我干运维那些事/生产实战/linux私房菜/logrotate切割时间不大对劲啊.md)  
+      * django私房菜   
+        * [django服务器IP限流的最佳实践](我干运维那些事/生产实战/django私房菜/django服务器IP限流的最佳实践.md)  
+        * [django配置解耦最佳实践](我干运维那些事/生产实战/django私房菜/django配置解耦最佳实践.md)  
+        * [django配置保密最佳实践](我干运维那些事/生产实战/django私房菜/django配置保密最佳实践.md)  
+        * [django发送错误日志邮件](我干运维那些事/生产实战/django私房菜/django发送错误日志邮件.md)
+      * mysql私房菜
+        * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/生产实战/mysql私房菜/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)
+        * [ubuntu18.04安装mysql5.7.35并且开启双机备份](我干运维那些事/生产实战/mysql私房菜/ubuntu18.04安装mysql5.7.35并且开启双机备份.md)
+      * docker私房菜
+        * [帮荔枝搭建docker小程序后台](我干运维那些事/生产实战/docker私房菜/帮荔枝搭建docker小程序后台.md)
       * [阿里arthas工具初探](我干运维那些事/生产实战/阿里arthas工具初探.md)  
-      * [django服务器IP限流的最佳实践](我干运维那些事/生产实战/django服务器IP限流的最佳实践.md)  
-      * [nginx服务器IP黑名单的最佳实践](我干运维那些事/生产实战/nginx服务器IP黑名单的最佳实践.md)  
-      * [django配置解耦最佳实践](我干运维那些事/生产实战/django配置解耦最佳实践.md)  
-      * [django配置保密最佳实践](我干运维那些事/生产实战/django配置保密最佳实践.md)  
-      * [logrotate切割时间不大对劲啊](我干运维那些事/生产实战/logrotate切割时间不大对劲啊.md)  
-      * [vi日志文件后就不追加了的有趣现象](我干运维那些事/生产实战/vi日志文件后就不追加了的有趣现象.md)  
-      * [怎么快速定位磁盘空间不足的问题](我干运维那些事/生产实战/怎么快速定位磁盘空间不足的问题.md)  
 * 杂谈
   * [闭包和对象谁是穷人](闭包是穷人的对象，对象是穷人的闭包.md)
   * [5分钟用hexo和travis搭建github-pages](5分钟用hexo和travis搭建github-pages.md)
