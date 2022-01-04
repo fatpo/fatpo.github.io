@@ -60,6 +60,8 @@
       * [科普Supplier](JVM/Java8高效代码/科普Supplier.md)
       * [科普Consumer](JVM/Java8高效代码/科普Consumer.md)
       * [科普Predicate](JVM/Java8高效代码/科普Predicate.md)
+* Python
+  * [写leetcode常用python套路](Python/写leetcode常用python套路.md)
 * 并发编程
   * 线程
       * [Linux进程状态转移图](并发编程/线程/Linux进程状态转移图.md)
