@@ -62,6 +62,7 @@
       * [科普Predicate](JVM/Java8高效代码/科普Predicate.md)
 * Python
   * [写leetcode常用python套路](Python/写leetcode常用python套路.md)
+  * [自己构造二叉树](Python/自己构造二叉树.md)
 * 并发编程
   * 线程
       * [Linux进程状态转移图](并发编程/线程/Linux进程状态转移图.md)
