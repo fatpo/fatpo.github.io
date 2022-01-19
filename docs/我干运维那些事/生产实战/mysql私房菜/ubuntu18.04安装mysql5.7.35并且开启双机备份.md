@@ -60,7 +60,19 @@ mysql> flush privileges;
 mysql> quit
 ```
 
-# 4、数据库备份
+# 4、修改监听
+配置文件路径:
+```
+cat /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+把`bind-address = 127.0.0.1`改为`bind-address = 0.0.0.0`。
+
+重启：
+```
+service mysql restart
+```
+
+# 5、数据库备份
 
 主机A在跑应用，我打算在主机B每天定时备份下主机A的数据。
 
@@ -102,7 +114,7 @@ ls  $(pwd)/dblocal.sql.gz* |sort -nr | awk 'NR>30' | xargs rm -f
 ssh root@140.1.2.3 "mysqldump --add-drop-table -uroot -p123456  myappdb | gzip -9" > dblocal.sql.gz
 ```
 
-# 5、参考
+# 6、参考
 * [Ubuntu18.04 安装MySQL](https://blog.csdn.net/weixx3/article/details/80782479)
 * [Why apt madison?](https://unix.stackexchange.com/questions/276037/why-apt-madison)
 * [mysql_用命令行备份数据库](https://www.cnblogs.com/hellangels333/p/9059770.html)
