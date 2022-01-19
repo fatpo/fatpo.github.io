@@ -108,6 +108,7 @@
         * [nginx服务器IP黑名单的最佳实践](我干运维那些事/生产实战/linux私房菜/nginx服务器IP黑名单的最佳实践.md)  
         * [ubuntu18.04开启supervisor开机自启动](我干运维那些事/生产实战/linux私房菜/ubuntu18.04开启supervisor开机自启动.md)
         * [ubuntu18.04用sysv-rc-conf管理开机自启动](我干运维那些事/生产实战/linux私房菜/ubuntu18.04用sysv-rc-conf管理开机自启动.md)
+        * [ubuntu18.04打开fail2ban](我干运维那些事/生产实战/linux私房菜/ubuntu18.04打开fail2ban.md)
         * [怎么快速定位磁盘空间不足的问题](我干运维那些事/生产实战/linux私房菜/怎么快速定位磁盘空间不足的问题.md)  
         * [vi日志文件后就不追加了的有趣现象](我干运维那些事/生产实战/linux私房菜/vi日志文件后就不追加了的有趣现象.md)  
         * [logrotate切割时间不大对劲啊](我干运维那些事/生产实战/linux私房菜/logrotate切割时间不大对劲啊.md)  
