@@ -49,7 +49,7 @@
          * [第22课-位移提交](消息中间件/图解kafka实战/第22课位移提交.md)
          * [第23课-再均衡器](消息中间件/图解kafka实战/第23课再均衡器.md)
          * [第24课-客户端拦截器](消息中间件/图解kafka实战/第24课客户端拦截器.md)
-* JVM
+* Java
   * JVM整体结构
       * [JVM内存分配过程窥探](JVM/JVM整体架构/JVM内存分配过程窥探.md)
       * [JMM内存模型](JVM/JVM整体架构/JMM内存模型.md)
@@ -62,6 +62,7 @@
       * [垃圾收集算法](JVM/GC/垃圾收集算法.md)
       * [垃圾收集器](JVM/GC/垃圾收集器.md)
   * Java线程  
+      * [Java多线程的3个核心问题](JVM/Java线程/Java多线程的3个核心问题.md)
       * [Java多线程累加int的最佳实践](JVM/Java线程/Java多线程累加int的最佳实践.md)
       * [什么是Java线程安全](JVM/Java线程/什么是Java线程安全.md)
       * [synchronized是什么](JVM/Java线程/synchronized是什么.md)
