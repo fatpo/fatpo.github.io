@@ -24,7 +24,9 @@
       * [设计模式之组合](设计模式/基础概念/设计模式之组合模式.md)
 * 数据库专题
   * redis
-     * [redis应知应会](数据库专题/redis应知应会.md)
+    * [redis应知应会](数据库专题/redis应知应会.md)
+  * mysql
+    * [mysql应知应会](数据库专题/mysql应知应会.md)
 * 消息中间件
   * kafka
       * [kafka应知应会](消息中间件/kafka应知应会.md)
