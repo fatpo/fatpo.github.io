@@ -110,6 +110,8 @@
   * bin log 是逻辑日志，记录的是SQL语句的原始逻辑；redo log 是物理日志，记录的是在某个数据页上做了什么修改。
 
 ## **12、讲一下MySQL架构？**
+![mysql架构图](./imgs/mysql架构图.jpg)
+
 * server层：
   * 连接器： 当客户端连接 MySQL 时，server层会对其进行身份认证和权限校验。
   * 查询缓存: 执行查询语句的时候，会先查询缓存，先校验这个 sql 是否执行过，如果有缓存这个 sql，就会直接返回给客户端，如果没有命中，就会执行后续的操作。
@@ -191,3 +193,9 @@
     * Sorting result，线程正在对结果集进行排序
     * Locked，线程正在等待锁
 * 我记得还有个`show engine innodb status`用来查看死锁的
+
+
+## 引用
+* [https://zhuanlan.zhihu.com/p/346845050](https://zhuanlan.zhihu.com/p/346845050)
+* [https://zhuanlan.zhihu.com/p/414740448](https://zhuanlan.zhihu.com/p/414740448)
+* [https://zhuanlan.zhihu.com/p/451740252](https://zhuanlan.zhihu.com/p/451740252)
