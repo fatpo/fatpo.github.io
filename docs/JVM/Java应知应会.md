@@ -109,16 +109,15 @@
     
 
 ## 7、Java的类加载器
-* 分类
-    * 规范
-        * Bootstrap ClassLoader
-        * Other
-    * Hotspot实现
-        * Bootstrap ClassLoader，{JAVAHOME}/lib, 采用C++编写，无法作为对象被程序引用！
-        * Other
-            * Extension ClassLoader, {JAVAHOME}/lib/ext, 采用Java编写，可以被程序引用，继承自Java.lang.ClassLoader
-            * Application ClassLoader, classpath/java.class.path, 采用Java编写，可以被程序引用，继承自Java.lang.ClassLoader
-            * User ClassLoader, 任意来源, 采用Java编写，可以被程序引用，继承自Java.lang.ClassLoader
+* 规范
+    * Bootstrap ClassLoader
+    * Other
+* Hotspot实现
+    * Bootstrap ClassLoader，{JAVAHOME}/lib, 采用C++编写，无法作为对象被程序引用！
+    * Other
+        * `Extension ClassLoader`, {JAVAHOME}/lib/ext, 采用Java编写，可以被程序引用，继承自Java.lang.ClassLoader
+        * `Application ClassLoader`, classpath/java.class.path, 采用Java编写，可以被程序引用，继承自Java.lang.ClassLoader
+        * `User ClassLoader`, 任意来源, 采用Java编写，可以被程序引用，继承自Java.lang.ClassLoader
 * 两个问题？
     * 不同的类加载器，好像除了读取二进制的动作和范围不一样，那么后续的加载逻辑是否也不一样？
         * 后续都是由 java.lang.ClassLoader.defineClass() 统一处理，开发者没有操作的空间。
