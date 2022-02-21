@@ -2,7 +2,7 @@
 * **2、Java反射是什么**
 * **3、Java创建线程池的流程和参数**
 * **4、Java线程的状态流转**
-* **5、为什么必须在同步的方法/块内调用wait（），notify（），notifyAll（）**
+* **5、为什么必须在同步的方法/块内调用wait()，notify()，notifyAll()**
 * **6、Java的HashMap底层原理**
 
 
@@ -87,7 +87,7 @@
     * Thread.sleep(1000)、Object.wait(1000)、 Thread.join(1000)、LockSupport.parkNanos(1000)、LockSupport.parkUntil(1000) ; 等待时间完毕进入runnable状态
   * TERMINATED：终止，线程执行完毕
 
-## **5、为什么必须在同步的方法/块内调用wait（），notify（），notifyAll（）**
+## **5、为什么必须在同步的方法/块内调用wait()，notify()，notifyAll()**
 * 1、一个线程调用一个对象A的wait()之后,就需要另外一个线程来调用A的notify() 来唤醒,这样的成对使用是一种线程间的通讯
 * 2、另一方面 wait()操作的调用一定是到达某种特定状态来，而这种特定状态是由其他线程 调用notify（），notifyAll（） 向外发出的 已到达特定状态的信号。该状态是线程之间的通信信道，并且是 共享可变状态。
 * 3、Synchronize 保证多线程状态下 ，只有一个线程来操作 wait（），notify（），notifyAll（），任意意时刻只能被唯一的一个获得了对象实例锁的线程调用
