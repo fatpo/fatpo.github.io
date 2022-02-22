@@ -8,6 +8,7 @@
 * **8、Java的类的加载机制**
 * **9、聊聊从源码文件(.java)到代码执行的过程呗**
 * **10、GC是什么**
+* **11、String和String Buffer和String builder**
 
 
 ## 1、Java创建对象的几种方式
@@ -238,5 +239,8 @@
     * 大对象单独存放，现在是H区。
     * 解决错标问题：三色标记算法。
     
-    
-    
+
+## 11、String和String Buffer和String builder？
+* String: 不可变字符串
+* StringBuffer：可变字符串，线程安全，支持多线程并发操作
+* StringBuilder： 可变字符串，线程不安全，但是效率稍微高些许，单线程下优先使用SB
