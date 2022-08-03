@@ -20,6 +20,11 @@
 * **20、什么是MySQL主从同步？**
 * **21、乐观锁和悲观锁是什么？？？**
 * **22、用过processlist吗？**
+* **23、Mysql自增ID用完了怎么办？**
+* **24、讲一下explain？**
+* **25、线上CPU暴涨如何排查？**
+* **26、为什么建议设置NOT NULL？**
+* **27、什么是索引下推？**
 
 ## 1、数据库的三大范式？
 * 第一范式1NF: 保证字段的原子性，比如“深圳 肥婆”，就必须分成两个字段“city”、“userName”。
@@ -194,6 +199,37 @@
     * Locked，线程正在等待锁
 * 我记得还有个`show engine innodb status`用来查看死锁的
 
+## 23、Mysql自增ID用完了怎么办？
+* 设置了主键：
+  * 用完了就报错。主键冲突。
+* 不设置主键：
+  * mysql会帮我们设置一个自增主键，优先选择第一个非空的unique key，如果没有这个key就用隐藏row_id，最高是40亿。
+  * 这个40亿用完了，不会报错，会循环开始。数据会覆盖。（但是在日志表这么用还是可以的）
+
+## 24、讲一下explain？
+* 着重关注ref指标：
+  * system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > all
+
+## 25、线上CPU暴涨如何排查？
+* 1、服务器top指令，看哪个进程。
+* 2、`show processlist`， 查看mysql 线程情况。
+* 3、`show open tables where in_use > 0` 查看表锁情况。
+* 4、`show engine innodb status` 查看死锁情况。
+* 5、查看mysql的error log。
+* 6、查看mysql的slow log。
+* 7、iostat查看磁盘状况。
+
+## 26、为什么建议设置NOT NULL?
+* 1、NULL在mysql中也是占用空间的，空值不占用空间。
+* 2、NULL的过滤条件 `select * from A where x is not null`，而非`select * from A where x != ''`
+* 3、count(字段)是不会统计null值。
+* 4、NULL是一个字段，它比任何字段都小，按照字段排序NULL值一般排在最前面。
+
+
+## 27、什么是索引下推？
+* 下推的意思是，server层的操作下放到引擎层。 索引下推是innodb回表的时候，尽可能减少回表操作的一个机制。
+* 本来流程：引擎召回数据，然后交给server层过滤，期间引擎如果用到非聚集索引，是要回表的，回表拿到完整数据后再回到server层做过滤。
+* 索引下推：引擎召回数据，如果用到了非聚集索引，该非聚集索引上有我们过滤条件的数据，那么直接完成过滤操作，不需要回表后拿到完整数据再去server层过滤，大大提升性能。
 
 ## 引用
 * [https://zhuanlan.zhihu.com/p/346845050](https://zhuanlan.zhihu.com/p/346845050)
