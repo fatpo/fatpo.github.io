@@ -1,7 +1,7 @@
 # 1、背景
 最近不是搞了个小项目嘛，当一回运维，在测试开机自启动。
 
-之前发现了一个神器：sysc-rc-conf，[传送门](https://fatpo.github.io/#/我干运维那些事/ubuntu18.04用sysv-rc-conf管理开机自启动)。
+之前发现了一个神器：sysc-rc-conf，[传送门](https://fatpo.github.io/#/我干运维那些事/生产实战/linux私房菜/ubuntu18.04用sysv-rc-conf管理开机自启动)。
 
 这波啊，这波是`学以致用`。
 
