@@ -224,3 +224,4 @@ socat tcp-connect:10.1.96.8:7005 exec:'bash -li',pty,stderr,setsid,sigint,sane
 
 # 参考链接
 *[What actually reuseaddr option does in socat?](https://stackoverflow.com/questions/75059280/what-actually-reuseaddr-option-does-in-socat)
+*[奇妙的linux世界：Socat 入门教程](https://mp.weixin.qq.com/s/96GQcFN_Avjfu1zvJDVEyg)
