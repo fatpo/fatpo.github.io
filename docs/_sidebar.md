@@ -2,6 +2,8 @@
   * [README](README.md)
 * CTF专题
   * [socat入门](CTF专题/socat入门.md)
+  * [socat和openssl](CTF专题/socat和openssl.md)
+  * [openssl入门](CTF专题/openssl入门.md)
   * [diff&patch&bindiff入门](CTF专题/diff&patch&bindiff入门.md)
   * [pwntools入门](CTF专题/pwntools入门.md)
   * [pyftpdlib入门](CTF专题/pyftpdlib入门.md)
