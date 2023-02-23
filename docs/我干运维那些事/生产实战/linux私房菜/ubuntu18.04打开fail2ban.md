@@ -35,7 +35,7 @@ sudo systemctl enable fail2ban
 
 接下来我们将为SSH登录尝试配置一个jail。在/etc fail2ban目录中，您将找到jail.conf文件。不要编辑此文件。相反，我们将创建一个新文件jail.local，它将覆盖jail.conf中的任何类似设置。我们的新jail配置将监视/var/log/auth.log，使用fail2ban sshd过滤器，将SSH端口设置为22，并将最大重试次数设置为3.为此，请发出命令：
 ```
-sudo nano /etc/fail2ban/jail.local
+sudo vi /etc/fail2ban/jail.local
 ```
 
 在此新文件中，粘贴以下内容：
