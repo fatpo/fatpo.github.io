@@ -1,8 +1,25 @@
 直接上案例：
-```text
+```
+# 配置 HTTP 重定向到 HTTPS
 server {
     listen 80;
     server_name rmdata.com;
+    return 301 https://$server_name$request_uri;
+}
+
+# 配置 HTTPS
+server {
+    listen 443 ssl;
+    server_name rmdata.com;
+
+    # SSL 证书和密钥
+    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
+
+    # 配置 SSL 安全协议和密码套件
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
 
     # 配置前端静态文件服务
     location / {
@@ -38,4 +55,5 @@ server {
         }
     }
 }
+
 ```
