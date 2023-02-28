@@ -1,4 +1,4 @@
-直接上案例：
+# 直接上案例
 ```
 # 配置 HTTP 重定向到 HTTPS
 server {
@@ -56,4 +56,30 @@ server {
     }
 }
 
+```
+
+# 如何生成证书
+## 安装证书工具
+```text
+sudo apt-get update
+sudo apt-get install openssl
+```
+
+## 生成自签名证书和密钥
+```text
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt
+```
+在生成证书时，您需要提供一些信息，例如国家、省份、城市、组织和域名等。其中，Common Name 项应该填写您的服务器 IP 地址或您的主机名。
+
+## 将证书和私钥添加到 Nginx 配置文件中
+```text
+server {
+    listen 443 ssl;
+    server_name rmdata.com;
+
+    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
+
+    # 其他配置
+}
 ```
