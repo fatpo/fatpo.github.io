@@ -158,6 +158,7 @@
       * [五分钟搭建服务器](我干运维那些事/生产实战/五分钟搭建服务器.md)  
   * 疑难杂症
     * [敲错命令后 no module named 'apt_pkg'](我干运维那些事/疑难杂症/NoModuleNamed'apt_pkg'.md)
+    * [pymysql替换mysqlclient](我干运维那些事/疑难杂症/pymysql替换mysqlclient.md)
 * 杂谈
   * [闭包和对象谁是穷人](闭包是穷人的对象，对象是穷人的闭包.md)
   * [5分钟用hexo和travis搭建github-pages](5分钟用hexo和travis搭建github-pages.md)
