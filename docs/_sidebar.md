@@ -152,9 +152,14 @@
         * [部署前端+后台](我干运维那些事/生产实战/nginx案例/部署前端+后台.md)
         * [最简单的案例](我干运维那些事/生产实战/nginx案例/最简单的案例.md)
         * [内网也能https](我干运维那些事/生产实战/nginx案例/内网也能https.md)
+        * [正经服务器https实战](我干运维那些事/生产实战/nginx案例/正经服务器https实战.md)
       * [阿里arthas工具初探](我干运维那些事/生产实战/阿里arthas工具初探.md)  
       * [五分钟搭建一个官网](我干运维那些事/生产实战/五分钟搭建一个官网.md)  
       * [五分钟搭建服务器](我干运维那些事/生产实战/五分钟搭建服务器.md)  
+  * 疑难杂症
+    * [敲错命令后 no module named 'apt_pkg'](我干运维那些事/疑难杂症/NoModuleNamed'apt_pkg'.md)
+    * [pymysql替换mysqlclient](我干运维那些事/疑难杂症/pymysql替换mysqlclient.md)
+    * [python换源](我干运维那些事/疑难杂症/python换源.md)
 * 杂谈
   * [闭包和对象谁是穷人](闭包是穷人的对象，对象是穷人的闭包.md)
   * [5分钟用hexo和travis搭建github-pages](5分钟用hexo和travis搭建github-pages.md)
