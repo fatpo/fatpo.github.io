@@ -13,6 +13,7 @@ sudo cp apt_pkg.cpython-36m-x86_64-linux-gnu.so apt_pkg.so
 ```text
 apt-get -y install python3-pip
 apt-get install -y python3-setuptools
+apt-get install -y python3-devel
 pip3 install firebase_admin  --ignore-installed httplib2
 ```
 
