@@ -13,7 +13,7 @@ skip-grant-tables
 ```
 重启mysql：
 ```text
-systemctl restart mysq
+systemctl restart mysql
 ```
 进入 mysql修改密码：
 ```text
