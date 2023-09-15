@@ -1,10 +1,23 @@
+## 背景
+之前的ubuntu18.04 的 nginx 一直自动挂了，看了下 CPU 和内存都很正常。
+
+没办法, 只能重装, 不得不说,对腾讯云还是挺失望的。
+2C4G, 没有跑任何东西，就一个 nginx + html，然后告诉我一直内存溢出？
+
+还让我自查：https://cloud.tencent.com/document/product/213/61086
+
+呵呵。
+
 ## 提前申请好证书
 点点点： https://console.cloud.tencent.com/ssl
 
 ## 下载证书
+在  https://console.cloud.tencent.com/ssl 申请免费证书，通过后，下载好证书：
+
 ![img.png](tx_nginx_https_1.png)
 
 选择 nginx 格式：
+
 ![img_1.png](tx_nginx_https_2.png)
 
 ## 上传证书到服务器
