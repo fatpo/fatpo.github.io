@@ -149,6 +149,7 @@
             * [mysql5.7改为ssh连接遇到reading initial communication packet](我干运维那些事/生产实战/mysql私房菜/mysql5.7改为ssh连接遇到reading-initial-communication-packet.md)
             * [ubuntu18.04安装mysql5.7.35并且开启双机备份](我干运维那些事/生产实战/mysql私房菜/ubuntu18.04安装mysql5.7.35并且开启双机备份.md)
             * [ubuntu20.04安装mysql8.0并修改密码](我干运维那些事/生产实战/mysql私房菜/ubuntu20.04安装mysql8.0并修改密码.md)
+            * [mysql5.7给远程服务器新增一个用户](我干运维那些事/生产实战/mysql私房菜/mysql5.7给远程服务器新增一个用户.md)
         * docker私房菜
             * [帮荔枝搭建docker小程序后台](我干运维那些事/生产实战/docker私房菜/帮荔枝搭建docker小程序后台.md)
             * [创建局域网](我干运维那些事/生产实战/docker私房菜/创建局域网.md)
