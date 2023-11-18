@@ -136,3 +136,30 @@ nginx -s reload
 # 每天的0:00和12:00
 0 0,12 * * * certbot renew
 ```
+
+
+## 报错的教程
+在另外机器上失败了：
+```text
+# 错误信息1
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Obtaining a new certificate
+An unexpected error occurred:
+ValueError: Invalid version. The only valid version for X509Req is 0.
+Please see the logfiles in /var/log/letsencrypt for more details.
+
+# 错误信息2
+An unexpected error occurred:
+AttributeError: 'ArgumentParser' object has no attribute 'get_source_to_settings_dict'
+
+# 错误信息3
+An unexpected error occurred:
+Error creating new order :: Cannot issue for "abc.haha.xy": Domain name does not end with a valid public suffix (TLD)
+
+```
+最后解决：
+```text
+pip3 install certbot==2.7.1 certbot-nginx==2.7.1
+ sudo certbot certonly --nginx -d abc.haha.xyz
+```
