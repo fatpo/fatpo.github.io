@@ -161,5 +161,6 @@ Error creating new order :: Cannot issue for "abc.haha.xy": Domain name does not
 最后解决：
 ```text
 pip3 install certbot==2.7.1 certbot-nginx==2.7.1
- sudo certbot certonly --nginx -d abc.haha.xyz
+
+sudo certbot certonly --nginx -d abc.haha.xyz
 ```
