@@ -161,6 +161,7 @@
             * [内网也能https](我干运维那些事/生产实战/nginx案例/内网也能https.md)
             * [正经服务器https实战](我干运维那些事/生产实战/nginx案例/正经服务器https实战.md)
             * [配置IP地区限制](我干运维那些事/生产实战/nginx案例/配置IP地区限制.md)
+            * [配置IP地区限制-允许设备白名单](我干运维那些事/生产实战/nginx案例/配置IP地区限制-允许设备白名单.md)
             * [腾讯云nginx部署https实战](我干运维那些事/生产实战/nginx案例/腾讯云nginx部署https实战.md)
             * [ssl证书突然过期nginx找不到conf解决方案](我干运维那些事/生产实战/nginx案例/ssl证书突然过期nginx找不到conf解决方案.md)
             * [certbot配置ssl证书实战](我干运维那些事/生产实战/nginx案例/certbot配置ssl证书实战.md)
