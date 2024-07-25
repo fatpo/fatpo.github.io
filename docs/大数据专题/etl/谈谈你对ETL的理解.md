@@ -23,7 +23,7 @@
 ## 1. 谈到ETL
 
 你马上得想到这张图：
-![etc.png](img/etl.png)
+![etc.png](../img/etl.png)
 
 本质就是：extract -> transform -> load ，抽取数据，清洗数据，转换数据，保存数据。
 
