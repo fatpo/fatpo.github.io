@@ -191,6 +191,8 @@
         * [pymysql替换mysqlclient](我干运维那些事/疑难杂症/pymysql替换mysqlclient.md)
         * [python换源](我干运维那些事/疑难杂症/python换源.md)
         * [github提速](我干运维那些事/疑难杂症/github提速.md)
+    * 帮朋友忙
+      * [帮我下载一个视频](我干运维那些事/帮朋友做运维/帮我下载一个视频.md)
 * 杂谈
     * [闭包和对象谁是穷人](闭包是穷人的对象，对象是穷人的闭包.md)
     * [5分钟用hexo和travis搭建github-pages](5分钟用hexo和travis搭建github-pages.md)
