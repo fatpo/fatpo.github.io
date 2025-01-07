@@ -186,6 +186,7 @@
         * [阿里arthas工具初探](我干运维那些事/生产实战/阿里arthas工具初探.md)
         * [五分钟搭建一个官网](我干运维那些事/生产实战/五分钟搭建一个官网.md)
         * [五分钟搭建服务器](我干运维那些事/生产实战/五分钟搭建服务器.md)
+        * [mac一键zsh](我干运维那些事/生产实战/mac一键zsh.md)
     * 疑难杂症
         * [敲错命令后 no module named 'apt_pkg'](我干运维那些事/疑难杂症/NoModuleNamed'apt_pkg'.md)
         * [pymysql替换mysqlclient](我干运维那些事/疑难杂症/pymysql替换mysqlclient.md)
