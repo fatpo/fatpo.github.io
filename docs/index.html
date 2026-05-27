@@ -11,6 +11,16 @@
 
     <link rel="shortcut icon" href="hema.ico" type="image/x-icon">
     <link rel="icon" href="hema.ico" type="image/x-icon">
+    <style>
+        /* 侧边栏默认全部折叠 */
+        .sidebar-nav li > ul {
+            display: none;
+        }
+        /* docsify-sidebar-collapse 插件展开时会给 li 添加 open 类 */
+        .sidebar-nav li.open > ul {
+            display: block;
+        }
+    </style>
 </head>
 
 
@@ -24,7 +34,8 @@
         name: '言念君子温其如玉',
         repo: 'https://github.com/fatpo',  //开启github图标
         loadSidebar: true,
-        sidebarDisplayLevel: 1,  // sidebar-collapse 插件：一级可见，二级折叠
+        subMaxLevel: 0,        // 不限制层级，全部显示
+        sidebarDisplayLevel: 0, // 插件控制：0表示默认全部折叠
         autoHeader: true, // 自动给文章加一个title，名字就是文件名
         homepage: 'README.md',
         showLevel: false,
