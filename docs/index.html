@@ -16,9 +16,19 @@
         .sidebar-nav li > ul {
             display: none;
         }
-        /* docsify-sidebar-collapse 插件展开时会给 li 添加 open 类 */
         .sidebar-nav li.open > ul {
             display: block;
+        }
+        /* 有子菜单的 li 显示可点击的小三角 */
+        .sidebar-nav li.has-sub > a:after,
+        .sidebar-nav li.has-sub > p:after {
+            content: '▸';
+            float: right;
+            transition: transform 0.2s;
+        }
+        .sidebar-nav li.open.has-sub > a:after,
+        .sidebar-nav li.open.has-sub > p:after {
+            transform: rotate(90deg);
         }
     </style>
 </head>
@@ -35,7 +45,6 @@
         repo: 'https://github.com/fatpo',  //开启github图标
         loadSidebar: true,
         subMaxLevel: 0,        // 不限制层级，全部显示
-        sidebarDisplayLevel: 0, // 插件控制：0表示默认全部折叠
         autoHeader: true, // 自动给文章加一个title，名字就是文件名
         homepage: 'README.md',
         showLevel: false,
@@ -71,8 +80,47 @@
 
 </script>
 
-<!-- 侧边栏折叠 -->
-<script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse@1.3.5/dist/docsify-sidebar-collapse.min.js"></script>
+<!-- 侧边栏折叠（自定义，独立展开/折叠，无手风琴效果） -->
+<script>
+(function() {
+    function initSidebar() {
+        var sidebar = document.querySelector('.sidebar-nav');
+        if (!sidebar) return setTimeout(initSidebar, 100);
+
+        // 为有子菜单的 li 添加标记
+        var allLis = sidebar.querySelectorAll('li');
+        allLis.forEach(function(li) {
+            var childUl = li.querySelector(':scope > ul');
+            if (childUl) {
+                li.classList.add('has-sub');
+                // 点击有子菜单的标题区域时展开/折叠
+                var title = li.querySelector(':scope > a, :scope > p');
+                if (title) {
+                    title.style.cursor = 'pointer';
+                    title.addEventListener('click', function(e) {
+                        // 只切换当前项，不影响其他
+                        li.classList.toggle('open');
+                        e.stopPropagation();
+                    });
+                }
+            }
+        });
+    }
+
+    // docsify 每切换页面都会重新渲染，用 hook 监听
+    if (window.$docsify && window.$docsify.plugins) {
+        window.$docsify.plugins = window.$docsify.plugins || [];
+    }
+    // 等 DOM 就绪后初始化
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(initSidebar, 300);
+    });
+    // 也监听 docsify 的 page 切换
+    window.addEventListener('load', function() {
+        setTimeout(initSidebar, 500);
+    });
+})();
+</script>
 
 <!-- 代码复制 -->
 <script src="//unpkg.com/docsify-copy-code@2.1.1/dist/docsify-copy-code.min.js"></script>
