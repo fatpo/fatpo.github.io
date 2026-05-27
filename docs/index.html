@@ -75,51 +75,58 @@
             fontsize: '0.9em',
             color: 'rgb(90,90,90)',
             language: 'chinese'
-        }
+        },
+        // ======= 侧边栏独立折叠（无手风琴） =======
+        plugins: [
+            function(hook, vm) {
+                hook.doneEach(function() {
+                    initSidebarCollapse();
+                });
+            }
+        ]
     }
 
 </script>
 
 <!-- 侧边栏折叠（自定义，独立展开/折叠，无手风琴效果） -->
 <script>
-(function() {
-    function initSidebar() {
-        var sidebar = document.querySelector('.sidebar-nav');
-        if (!sidebar) return setTimeout(initSidebar, 100);
+function initSidebarCollapse() {
+    var sidebar = document.querySelector('.sidebar-nav');
+    if (!sidebar) return;
 
-        // 为有子菜单的 li 添加标记
-        var allLis = sidebar.querySelectorAll('li');
-        allLis.forEach(function(li) {
-            var childUl = li.querySelector(':scope > ul');
-            if (childUl) {
-                li.classList.add('has-sub');
-                // 点击有子菜单的标题区域时展开/折叠
-                var title = li.querySelector(':scope > a, :scope > p');
-                if (title) {
-                    title.style.cursor = 'pointer';
-                    title.addEventListener('click', function(e) {
-                        // 只切换当前项，不影响其他
-                        li.classList.toggle('open');
-                        e.stopPropagation();
-                    });
-                }
+    var allLis = sidebar.querySelectorAll('li');
+    allLis.forEach(function(li) {
+        // 跳过已处理的
+        if (li.dataset.sidebarInited) return;
+        li.dataset.sidebarInited = '1';
+
+        // 检查是否有直接子 ul
+        var children = li.children;
+        var hasUl = false;
+        for (var i = 0; i < children.length; i++) {
+            if (children[i].tagName === 'UL') {
+                hasUl = true;
+                break;
             }
-        });
-    }
+        }
+        if (!hasUl) return;
 
-    // docsify 每切换页面都会重新渲染，用 hook 监听
-    if (window.$docsify && window.$docsify.plugins) {
-        window.$docsify.plugins = window.$docsify.plugins || [];
-    }
-    // 等 DOM 就绪后初始化
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(initSidebar, 300);
+        li.classList.add('has-sub');
+
+        // 给 li 本身绑定点击（而非 a 标签，避免阻止导航）
+        li.addEventListener('click', function(e) {
+            // 如果点的是 a 标签里的链接，让 docsify 正常导航
+            if (e.target.tagName === 'A' && e.target.getAttribute('href')) {
+                // 同时展开当前目录
+                this.classList.add('open');
+                return;
+            }
+            // 点击空白区域或标题文字，只切换折叠
+            this.classList.toggle('open');
+            e.stopPropagation();
+        });
     });
-    // 也监听 docsify 的 page 切换
-    window.addEventListener('load', function() {
-        setTimeout(initSidebar, 500);
-    });
-})();
+}
 </script>
 
 <!-- 代码复制 -->
