@@ -88,8 +88,46 @@
 
 </script>
 
-<!-- 侧边栏折叠（自定义，独立展开/折叠，无手风琴效果） -->
+<!-- 侧边栏折叠（自定义，独立展开/折叠，无手风琴效果，记忆展开状态） -->
 <script>
+// 全局记忆：用路径字符串作 key，记忆哪些目录是展开的
+var _sidebarOpenMap = {};
+try {
+    _sidebarOpenMap = JSON.parse(localStorage.getItem('_sidebarOpenMap') || '{}');
+} catch(e) {}
+
+// 获取某个 li 的路径（父级标题链），作为唯一标识
+function _getLiPath(li) {
+    var parts = [];
+    var el = li;
+    while (el && el.closest('.sidebar-nav')) {
+        var label = '';
+        // 获取第一个 a 或 p 子元素的文本
+        for (var i = 0; i < el.children.length; i++) {
+            var tag = el.children[i].tagName;
+            if (tag === 'A' || tag === 'P') {
+                label = el.children[i].textContent.trim();
+                break;
+            }
+        }
+        if (!label) {
+            // fallback: 取元素前的直接文本节点
+            for (var j = 0; j < el.childNodes.length; j++) {
+                if (el.childNodes[j].nodeType === 3) {
+                    label += el.childNodes[j].textContent;
+                } else if (el.childNodes[j].nodeType === 1) {
+                    break;
+                }
+            }
+            label = label.trim();
+        }
+        if (label) parts.unshift(label);
+        var parent = el.parentElement;
+        el = parent ? parent.closest('li') : null;
+    }
+    return parts.join(' > ');
+}
+
 function initSidebarCollapse() {
     var sidebar = document.querySelector('.sidebar-nav');
     if (!sidebar) return;
@@ -113,16 +151,27 @@ function initSidebarCollapse() {
 
         li.classList.add('has-sub');
 
+        // 恢复记忆的展开状态
+        var path = _getLiPath(li);
+        if (_sidebarOpenMap[path]) {
+            li.classList.add('open');
+        }
+
         // 给 li 本身绑定点击（而非 a 标签，避免阻止导航）
         li.addEventListener('click', function(e) {
+            var p = _getLiPath(this);
             // 如果点的是 a 标签里的链接，让 docsify 正常导航
             if (e.target.tagName === 'A' && e.target.getAttribute('href')) {
-                // 同时展开当前目录
+                // 展开当前目录并记忆
                 this.classList.add('open');
+                _sidebarOpenMap[p] = true;
+                try { localStorage.setItem('_sidebarOpenMap', JSON.stringify(_sidebarOpenMap)); } catch(ignore) {}
                 return;
             }
-            // 点击空白区域或标题文字，只切换折叠
+            // 点击空白区域或标题文字，切换折叠并记忆
             this.classList.toggle('open');
+            _sidebarOpenMap[p] = this.classList.contains('open');
+            try { localStorage.setItem('_sidebarOpenMap', JSON.stringify(_sidebarOpenMap)); } catch(ignore) {}
             e.stopPropagation();
         });
     });
